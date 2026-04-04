@@ -1,0 +1,88 @@
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[project]
+name = "scitex-str"
+version = "0.1.0"
+description = "Text processing utilities for scientific workflows — LaTeX formatting, colored output, string parsing, and plot text helpers"
+readme = "README.md"
+license = "AGPL-3.0"
+requires-python = ">=3.10"
+authors = [
+    { name = "Yusuke Watanabe", email = "ywatanabe@scitex.ai" },
+]
+keywords = [
+    "text",
+    "string",
+    "latex",
+    "formatting",
+    "scientific",
+    "parsing",
+    "color",
+    "terminal",
+]
+classifiers = [
+    "Development Status :: 4 - Beta",
+    "Environment :: Console",
+    "Intended Audience :: Science/Research",
+    "License :: OSI Approved :: GNU Affero General Public License v3",
+    "Operating System :: OS Independent",
+    "Programming Language :: Python :: 3",
+    "Programming Language :: Python :: 3.10",
+    "Programming Language :: Python :: 3.11",
+    "Programming Language :: Python :: 3.12",
+    "Programming Language :: Python :: 3.13",
+    "Topic :: Scientific/Engineering",
+    "Topic :: Text Processing",
+]
+dependencies = [
+    "scitex-dict>=0.1.0",
+]
+
+[project.optional-dependencies]
+dev = [
+    "scitex-dev",
+    "pytest>=7.0.0",
+    "pytest-cov>=4.0.0",
+    "pytest-xdist>=3.0.0",
+    "pre-commit>=3.5.0",
+]
+docs = [
+    "sphinx>=7.0",
+    "sphinx-rtd-theme>=2.0",
+    "myst-parser>=2.0",
+    "sphinx-copybutton>=0.5",
+    "sphinx-autodoc-typehints>=1.25",
+]
+all = []
+
+[project.entry-points."scitex_dev.docs"]
+scitex-str = "scitex_str"
+
+[project.entry-points."scitex_dev.skills"]
+
+[project.urls]
+Homepage = "https://github.com/ywatanabe1989/scitex-str"
+Documentation = "https://scitex-str.readthedocs.io"
+Repository = "https://github.com/ywatanabe1989/scitex-str.git"
+Issues = "https://github.com/ywatanabe1989/scitex-str/issues"
+
+[tool.hatch.build.targets.wheel]
+packages = ["src/scitex_str"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+python_files = ["test_*.py"]
+addopts = "-v --tb=short --cov=scitex_str --cov-report=term-missing"
+
+[tool.ruff]
+line-length = 88
+target-version = "py310"
+
+[tool.ruff.lint]
+select = ["E", "F", "W", "I"]
+ignore = ["E501"]
+
+[tool.scitex-linter]
+library_dirs = ["src", "tests", "examples"]

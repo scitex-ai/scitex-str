@@ -38,6 +38,7 @@ classifiers = [
 ]
 dependencies = [
     "scitex-dict>=0.1.0",
+    "natsort",
 ]
 
 [project.optional-dependencies]

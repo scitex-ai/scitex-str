@@ -3,11 +3,18 @@ name: scitex-str
 description: Text-processing utilities for scientific Python — colored/boxed console prints, LaTeX safety with mathtext/unicode fallback, plot-label formatting, and search/parse/replace helpers. Public API — console (`printc`, `color_text`/`ct`, `print_debug`, `remove_ansi`), LaTeX (`to_latex_style`, `safe_to_latex_style`, `add_hat_in_latex_style`, `safe_add_hat_in_latex_style`, `hat_latex_style`, `latex_style`), LaTeX fallback (`check_latex_capability`, `get_latex_status`, `latex_to_mathtext`, `latex_to_unicode`, `safe_latex_render`, `latex_fallback_decorator`, `set_fallback_mode` / `get_fallback_mode`, `enable_latex_fallback` / `disable_latex_fallback`, `reset_latex_cache`, `LaTeXFallbackError`), plot text (`axis_label`, `format_axis_label`, `format_plot_text`, `format_title`, `title`, `scientific_text`, `check_unit_consistency`, `factor_out_digits`, `auto_factor_axis`, `smart_tick_formatter`), parsing/search (`grep`, `search`, `parse`, `replace`), misc (`clean_path`, `decapitalize`, `title_case`, `squeeze_spaces`, `readable_bytes`, `mask_api`). No CLI, no MCP tools. Drop-in replacement for hand-rolling ANSI color codes (colorama), ad-hoc `re` patterns for grep/search in Python, manual `$\hat{x}$` LaTeX wrapping, custom `try/except` blocks around matplotlib LaTeX rendering, and bespoke tick-label digit-factoring (×10⁶) logic. Use whenever the user asks to "print colored text to console", "add a debug print with file/line info", "strip ANSI codes from a log", "render a label as LaTeX with fallback when TeX is missing", "check if LaTeX is available on this system", "format an axis label with units", "factor out common digits from tick labels", "grep lines from a string", "parse a formatted string", "mask an API key for logging", "make bytes human-readable", "convert a filename to title case", or mentions printc, color_text, latex_fallback, scitex.str.
 user-invocable: false
 primary_interface: python
+interfaces:
+  python: 3
+  cli: 0
+  mcp: 0
+  skills: 2
+  hook: 0
+  http: 0
 ---
 
 # scitex-str
 
-> **Primary interface: Python API.** Import in scripts/notebooks — CLI & MCP are thin wrappers over the Python functions.
+> **Interfaces:** Python ⭐⭐⭐ (primary) · CLI — · MCP — · Skills ⭐⭐ · Hook — · HTTP —
 
 Grab-bag of string helpers used across SciTeX. Three rough themes:
 

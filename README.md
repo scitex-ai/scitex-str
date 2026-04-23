@@ -14,6 +14,14 @@
 
 ---
 
+## Problem and Solution
+
+
+| # | Problem | Solution |
+|---|---------|----------|
+| 1 | **LaTeX labels crash matplotlib when TeX isn't installed** -- CI runners, laptops without MacTeX, Colab without `!apt install texlive` all fail | **`safe_latex_render(s)`** -- auto-detects LaTeX; falls back to mathtext then unicode silently |
+| 2 | **ANSI color codes + grep/parse sprinkled as ad-hoc `re` patterns** -- each script reinvents the wheel | **Grab-bag of helpers** -- `printc`, `color_text`, `grep`, `parse`, `replace`, `mask_api`, `readable_bytes` — boring but consistent across 33 packages |
+
 ## Problem
 
 Scientific Python code frequently needs LaTeX-style formatting for axis labels, colored terminal output for debugging, and structured string parsing for file paths and templates. These are scattered across ad-hoc helper functions in every project.

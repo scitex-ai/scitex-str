@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 """scitex-str: Text processing utilities for scientific workflows."""
 
-__version__ = "0.1.0"
+__version__ = "0.1.1"
 
 from ._clean_path import clean_path
 from ._color_text import color_text, ct

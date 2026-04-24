@@ -83,15 +83,31 @@ def search(
         >>> to_list(np.array(['x', 'y']))
         ['x', 'y']
         """
-        # Lazy imports to avoid circular import issues
-        import pandas as pd
-        import xarray as xr
+        # Optional heavy deps — accept them when installed, no-op otherwise.
+        try:
+            import pandas as pd
+        except ImportError:
+            pd = None
+        try:
+            import xarray as xr
+        except ImportError:
+            xr = None
 
-        if isinstance(string_or_pattern, (np.ndarray, pd.Series, xr.DataArray)):
+        arraylike_types: list = [np.ndarray]
+        if pd is not None:
+            arraylike_types.append(pd.Series)
+        if xr is not None:
+            arraylike_types.append(xr.DataArray)
+
+        list_like_types: list = [list, tuple]
+        if pd is not None:
+            list_like_types.append(pd.Index)
+
+        if isinstance(string_or_pattern, tuple(arraylike_types)):
             return string_or_pattern.tolist()
         elif isinstance(string_or_pattern, abc.KeysView):
             return list(string_or_pattern)
-        elif not isinstance(string_or_pattern, (list, tuple, pd.Index)):
+        elif not isinstance(string_or_pattern, tuple(list_like_types)):
             return [string_or_pattern]
         return string_or_pattern
 
@@ -112,9 +128,9 @@ def search(
     keys_matched = list(np.array(strings)[indices_matched])
 
     if ensure_one:
-        assert (
-            len(indices_matched) == 1
-        ), "Expected exactly one match, but found {}".format(len(indices_matched))
+        assert len(indices_matched) == 1, (
+            "Expected exactly one match, but found {}".format(len(indices_matched))
+        )
 
     if as_bool:
         bool_matched = np.zeros(len(strings), dtype=bool)

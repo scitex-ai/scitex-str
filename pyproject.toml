@@ -58,7 +58,9 @@ docs = [
     "sphinx-copybutton>=0.5",
     "sphinx-autodoc-typehints>=1.25",
 ]
-all = []
+all = [
+    "scitex-str[dev,docs]",
+]
 
 [project.entry-points."scitex_dev.docs"]
 scitex-str = "scitex_str"

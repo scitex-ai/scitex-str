@@ -4,7 +4,7 @@ build-backend = "hatchling.build"
 
 [project]
 name = "scitex-str"
-version = "0.1.1"
+version = "0.1.2"
 description = "Text processing utilities for scientific workflows — LaTeX formatting, colored output, string parsing, and plot text helpers"
 readme = "README.md"
 license = "AGPL-3.0"
@@ -39,6 +39,7 @@ classifiers = [
 dependencies = [
     "scitex-dict>=0.1.0",
     "natsort",
+    "titlecase",
 ]
 
 [project.optional-dependencies]
@@ -57,7 +58,9 @@ docs = [
     "sphinx-copybutton>=0.5",
     "sphinx-autodoc-typehints>=1.25",
 ]
-all = []
+all = [
+    "scitex-str[dev,docs]",
+]
 
 [project.entry-points."scitex_dev.docs"]
 scitex-str = "scitex_str"

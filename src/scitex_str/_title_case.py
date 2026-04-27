@@ -49,11 +49,14 @@ def title_case(text):
 
     words = text.split()
     final_words = []
-    for word in words:
-        # Check if the word is fully in uppercase and more than one character
+    for i, word in enumerate(words):
+        # Acronyms (fully-uppercase, len > 1) stay verbatim.
         if word.isupper() and len(word) > 1:
             final_words.append(word)
-        elif word.lower() in lowercase_words:
+            continue
+        # The first word is always capitalized — even if it would otherwise
+        # be a stopword. "the cat" → "The Cat", not "the Cat".
+        if i > 0 and word.lower() in lowercase_words:
             final_words.append(word.lower())
         else:
             final_words.append(word.capitalize())

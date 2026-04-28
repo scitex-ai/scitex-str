@@ -4,7 +4,7 @@ build-backend = "hatchling.build"
 
 [project]
 name = "scitex-str"
-version = "0.1.2"
+version = "0.1.3"
 description = "Text processing utilities for scientific workflows — LaTeX formatting, colored output, string parsing, and plot text helpers"
 readme = "README.md"
 license = "AGPL-3.0"
@@ -64,6 +64,8 @@ all = []
 scitex-str = "scitex_str"
 
 [project.entry-points."scitex_dev.skills"]
+
+scitex-str = "scitex_str"
 
 [project.urls]
 Homepage = "https://github.com/ywatanabe1989/scitex-str"

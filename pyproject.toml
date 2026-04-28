@@ -4,7 +4,7 @@ build-backend = "hatchling.build"
 
 [project]
 name = "scitex-str"
-version = "0.1.6"
+version = "0.1.7"
 description = "Text processing utilities for scientific workflows — LaTeX formatting, colored output, string parsing, and plot text helpers"
 readme = "README.md"
 license = "AGPL-3.0-only"
@@ -26,7 +26,6 @@ classifiers = [
     "Development Status :: 4 - Beta",
     "Environment :: Console",
     "Intended Audience :: Science/Research",
-    "License :: OSI Approved :: GNU Affero General Public License v3",
     "Operating System :: OS Independent",
     "Programming Language :: Python :: 3",
     "Programming Language :: Python :: 3.10",

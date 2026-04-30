@@ -1,3 +1,9 @@
+---
+name: quick-start
+description: scitex-str — Quick Start — see file body for details.
+tags: [scitex-str, scitex-package]
+---
+
 <!-- 01_quick-start.md -->
 
 # scitex-str — Quick Start

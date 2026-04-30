@@ -1,6 +1,8 @@
 #!/usr/bin/env python3
 """scitex-str: Text processing utilities for scientific workflows."""
 
+from __future__ import annotations
+
 try:
     from importlib.metadata import version as _v, PackageNotFoundError
     try:
@@ -63,6 +65,7 @@ from ._squeeze_space import squeeze_spaces
 from ._title_case import title_case
 
 __all__ = [
+    "__version__",
     "LaTeXFallbackError",
     "add_hat_in_latex_style",
     "auto_factor_axis",

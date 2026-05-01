@@ -1,0 +1,747 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="../../">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>scitex_str._format_plot_text &mdash; SciTeX Str v0.1.8</title>
+      <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=b86133f3" />
+      <link rel="stylesheet" type="text/css" href="../../_static/css/theme.css?v=9edc463e" />
+      <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css?v=76b2166b" />
+
+  
+      <script src="../../_static/jquery.js?v=5d32c60e"></script>
+      <script src="../../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="../../_static/documentation_options.js?v=22607128"></script>
+      <script src="../../_static/doctools.js?v=fd6eb6e6"></script>
+      <script src="../../_static/sphinx_highlight.js?v=6ffebe34"></script>
+      <script src="../../_static/clipboard.min.js?v=a7894cd8"></script>
+      <script src="../../_static/copybutton.js?v=f281be69"></script>
+    <script src="../../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../../index.html" class="icon icon-home">
+            SciTeX Str
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Getting Started</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../installation.html">Installation</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../installation.html#requirements">Requirements</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../installation.html#basic-installation">Basic Installation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../installation.html#development">Development</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../quickstart.html">Quickstart</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">API Reference</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../api/scitex_str.html">scitex_str</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../api/scitex_str.html#scitex_str.LaTeXFallbackError"><code class="docutils literal notranslate"><span class="pre">LaTeXFallbackError</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../api/scitex_str.html#scitex_str.add_hat_in_latex_style"><code class="docutils literal notranslate"><span class="pre">add_hat_in_latex_style()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../api/scitex_str.html#scitex_str.auto_factor_axis"><code class="docutils literal notranslate"><span class="pre">auto_factor_axis()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../api/scitex_str.html#scitex_str.axis_label"><code class="docutils literal notranslate"><span class="pre">axis_label()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../api/scitex_str.html#scitex_str.check_latex_capability"><code class="docutils literal notranslate"><span class="pre">check_latex_capability()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../api/scitex_str.html#scitex_str.check_unit_consistency"><code class="docutils literal notranslate"><span class="pre">check_unit_consistency()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../api/scitex_str.html#scitex_str.clean_path"><code class="docutils literal notranslate"><span class="pre">clean_path()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../api/scitex_str.html#scitex_str.color_text"><code class="docutils literal notranslate"><span class="pre">color_text()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../api/scitex_str.html#scitex_str.ct"><code class="docutils literal notranslate"><span class="pre">ct()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../api/scitex_str.html#scitex_str.decapitalize"><code class="docutils literal notranslate"><span class="pre">decapitalize()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../api/scitex_str.html#scitex_str.disable_latex_fallback"><code class="docutils literal notranslate"><span class="pre">disable_latex_fallback()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../api/scitex_str.html#scitex_str.enable_latex_fallback"><code class="docutils literal notranslate"><span class="pre">enable_latex_fallback()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../api/scitex_str.html#scitex_str.factor_out_digits"><code class="docutils literal notranslate"><span class="pre">factor_out_digits()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../api/scitex_str.html#scitex_str.format_axis_label"><code class="docutils literal notranslate"><span class="pre">format_axis_label()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../api/scitex_str.html#scitex_str.format_plot_text"><code class="docutils literal notranslate"><span class="pre">format_plot_text()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../api/scitex_str.html#scitex_str.format_title"><code class="docutils literal notranslate"><span class="pre">format_title()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../api/scitex_str.html#scitex_str.get_fallback_mode"><code class="docutils literal notranslate"><span class="pre">get_fallback_mode()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../api/scitex_str.html#scitex_str.get_latex_status"><code class="docutils literal notranslate"><span class="pre">get_latex_status()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../api/scitex_str.html#scitex_str.grep"><code class="docutils literal notranslate"><span class="pre">grep()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../api/scitex_str.html#scitex_str.hat_latex_style"><code class="docutils literal notranslate"><span class="pre">hat_latex_style()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../api/scitex_str.html#scitex_str.latex_fallback_decorator"><code class="docutils literal notranslate"><span class="pre">latex_fallback_decorator()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../api/scitex_str.html#scitex_str.latex_style"><code class="docutils literal notranslate"><span class="pre">latex_style()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../api/scitex_str.html#scitex_str.latex_to_mathtext"><code class="docutils literal notranslate"><span class="pre">latex_to_mathtext()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../api/scitex_str.html#scitex_str.latex_to_unicode"><code class="docutils literal notranslate"><span class="pre">latex_to_unicode()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../api/scitex_str.html#scitex_str.mask_api"><code class="docutils literal notranslate"><span class="pre">mask_api()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../api/scitex_str.html#scitex_str.parse"><code class="docutils literal notranslate"><span class="pre">parse()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../api/scitex_str.html#scitex_str.print_debug"><code class="docutils literal notranslate"><span class="pre">print_debug()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../api/scitex_str.html#scitex_str.printc"><code class="docutils literal notranslate"><span class="pre">printc()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../api/scitex_str.html#scitex_str.readable_bytes"><code class="docutils literal notranslate"><span class="pre">readable_bytes()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../api/scitex_str.html#scitex_str.remove_ansi"><code class="docutils literal notranslate"><span class="pre">remove_ansi()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../api/scitex_str.html#scitex_str.replace"><code class="docutils literal notranslate"><span class="pre">replace()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../api/scitex_str.html#scitex_str.reset_latex_cache"><code class="docutils literal notranslate"><span class="pre">reset_latex_cache()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../api/scitex_str.html#scitex_str.safe_add_hat_in_latex_style"><code class="docutils literal notranslate"><span class="pre">safe_add_hat_in_latex_style()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../api/scitex_str.html#scitex_str.safe_latex_render"><code class="docutils literal notranslate"><span class="pre">safe_latex_render()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../api/scitex_str.html#scitex_str.safe_to_latex_style"><code class="docutils literal notranslate"><span class="pre">safe_to_latex_style()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../api/scitex_str.html#scitex_str.scientific_text"><code class="docutils literal notranslate"><span class="pre">scientific_text()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../api/scitex_str.html#scitex_str.search"><code class="docutils literal notranslate"><span class="pre">search()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../api/scitex_str.html#scitex_str.set_fallback_mode"><code class="docutils literal notranslate"><span class="pre">set_fallback_mode()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../api/scitex_str.html#scitex_str.smart_tick_formatter"><code class="docutils literal notranslate"><span class="pre">smart_tick_formatter()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../api/scitex_str.html#scitex_str.squeeze_spaces"><code class="docutils literal notranslate"><span class="pre">squeeze_spaces()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../api/scitex_str.html#scitex_str.title"><code class="docutils literal notranslate"><span class="pre">title()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../api/scitex_str.html#scitex_str.title_case"><code class="docutils literal notranslate"><span class="pre">title_case()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../api/scitex_str.html#scitex_str.to_latex_style"><code class="docutils literal notranslate"><span class="pre">to_latex_style()</span></code></a></li>
+</ul>
+</li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../index.html">SciTeX Str</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../../index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="../index.html">Module code</a></li>
+      <li class="breadcrumb-item active">scitex_str._format_plot_text</li>
+      <li class="wy-breadcrumbs-aside">
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <h1>Source code for scitex_str._format_plot_text</h1><div class="highlight"><pre>
+<span></span><span class="ch">#!/usr/bin/env python3</span>
+<span class="c1"># Time-stamp: &quot;2025-06-04 11:08:00 (ywatanabe)&quot;</span>
+<span class="c1"># File: ./src/scitex/str/_format_plot_text.py</span>
+
+<span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">Functionality:</span>
+<span class="sd">    Format text for scientific plots with proper capitalization and unit handling</span>
+<span class="sd">    Includes LaTeX fallback mechanisms for robust rendering</span>
+<span class="sd">Input:</span>
+<span class="sd">    Text strings with optional units</span>
+<span class="sd">Output:</span>
+<span class="sd">    Properly formatted strings for scientific plots with LaTeX fallback</span>
+<span class="sd">Prerequisites:</span>
+<span class="sd">    matplotlib, _latex_fallback module (for LaTeX fallback)</span>
+<span class="sd">&quot;&quot;&quot;</span>
+
+<span class="kn">import</span><span class="w"> </span><span class="nn">re</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">typing</span><span class="w"> </span><span class="kn">import</span> <span class="n">Optional</span><span class="p">,</span> <span class="n">Tuple</span>
+
+<span class="k">try</span><span class="p">:</span>
+    <span class="kn">from</span><span class="w"> </span><span class="nn">._latex_fallback</span><span class="w"> </span><span class="kn">import</span> <span class="n">latex_fallback_decorator</span><span class="p">,</span> <span class="n">safe_latex_render</span>
+
+    <span class="n">FALLBACK_AVAILABLE</span> <span class="o">=</span> <span class="kc">True</span>
+<span class="k">except</span> <span class="ne">ImportError</span><span class="p">:</span>
+    <span class="n">FALLBACK_AVAILABLE</span> <span class="o">=</span> <span class="kc">False</span>
+
+    <span class="c1"># Define dummy decorator if fallback not available</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">latex_fallback_decorator</span><span class="p">(</span><span class="n">fallback_strategy</span><span class="o">=</span><span class="s2">&quot;auto&quot;</span><span class="p">,</span> <span class="n">preserve_math</span><span class="o">=</span><span class="kc">True</span><span class="p">):</span>
+        <span class="k">def</span><span class="w"> </span><span class="nf">decorator</span><span class="p">(</span><span class="n">func</span><span class="p">):</span>
+            <span class="k">return</span> <span class="n">func</span>
+
+        <span class="k">return</span> <span class="n">decorator</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="nf">safe_latex_render</span><span class="p">(</span><span class="n">text</span><span class="p">,</span> <span class="n">fallback_strategy</span><span class="o">=</span><span class="s2">&quot;auto&quot;</span><span class="p">,</span> <span class="n">preserve_math</span><span class="o">=</span><span class="kc">True</span><span class="p">):</span>
+        <span class="k">return</span> <span class="n">text</span>
+
+
+<div class="viewcode-block" id="format_plot_text">
+<a class="viewcode-back" href="../../api/scitex_str.html#scitex_str.format_plot_text">[docs]</a>
+<span class="nd">@latex_fallback_decorator</span><span class="p">(</span><span class="n">fallback_strategy</span><span class="o">=</span><span class="s2">&quot;auto&quot;</span><span class="p">,</span> <span class="n">preserve_math</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">format_plot_text</span><span class="p">(</span>
+    <span class="n">text</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span>
+    <span class="n">capitalize</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">True</span><span class="p">,</span>
+    <span class="n">unit_style</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="s2">&quot;parentheses&quot;</span><span class="p">,</span>
+    <span class="n">latex_math</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">True</span><span class="p">,</span>
+    <span class="n">scientific_notation</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">True</span><span class="p">,</span>
+    <span class="n">enable_fallback</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">True</span><span class="p">,</span>
+    <span class="n">replace_underscores</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">True</span><span class="p">,</span>
+<span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Format text for scientific plots with proper conventions and LaTeX fallback.</span>
+
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------</span>
+<span class="sd">    text : str</span>
+<span class="sd">        Input text to format</span>
+<span class="sd">    capitalize : bool, optional</span>
+<span class="sd">        Whether to capitalize the first letter, by default True</span>
+<span class="sd">    unit_style : str, optional</span>
+<span class="sd">        Unit bracket style: &quot;parentheses&quot; (), &quot;brackets&quot; [], or &quot;auto&quot;, by default &quot;parentheses&quot;</span>
+<span class="sd">    latex_math : bool, optional</span>
+<span class="sd">        Whether to enable LaTeX math formatting, by default True</span>
+<span class="sd">    scientific_notation : bool, optional</span>
+<span class="sd">        Whether to format scientific notation properly, by default True</span>
+<span class="sd">    enable_fallback : bool, optional</span>
+<span class="sd">        Whether to enable LaTeX fallback mechanisms, by default True</span>
+<span class="sd">    replace_underscores : bool, optional</span>
+<span class="sd">        Whether to replace underscores with spaces, by default True</span>
+
+<span class="sd">    Returns</span>
+<span class="sd">    -------</span>
+<span class="sd">    str</span>
+<span class="sd">        Formatted text ready for matplotlib with automatic LaTeX fallback</span>
+
+<span class="sd">    Examples</span>
+<span class="sd">    --------</span>
+<span class="sd">    &gt;&gt;&gt; format_plot_text(&quot;time (s)&quot;)</span>
+<span class="sd">    &#39;Time (s)&#39;</span>
+
+<span class="sd">    &gt;&gt;&gt; format_plot_text(&quot;voltage [V]&quot;, unit_style=&quot;brackets&quot;)</span>
+<span class="sd">    &#39;Voltage [V]&#39;</span>
+
+<span class="sd">    &gt;&gt;&gt; format_plot_text(&quot;frequency in Hz&quot;, unit_style=&quot;auto&quot;)</span>
+<span class="sd">    &#39;Frequency (Hz)&#39;</span>
+
+<span class="sd">    &gt;&gt;&gt; format_plot_text(&quot;signal_power_db&quot;)</span>
+<span class="sd">    &#39;Signal Power Db&#39;</span>
+
+<span class="sd">    &gt;&gt;&gt; format_plot_text(r&quot;$\alpha$ decay&quot;)  # Falls back if LaTeX fails</span>
+<span class="sd">    &#39;α decay&#39;</span>
+
+<span class="sd">    Notes</span>
+<span class="sd">    -----</span>
+<span class="sd">    If LaTeX rendering fails, this function automatically falls back to</span>
+<span class="sd">    mathtext or unicode alternatives while preserving scientific formatting.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">if</span> <span class="ow">not</span> <span class="n">text</span> <span class="ow">or</span> <span class="ow">not</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">text</span><span class="p">,</span> <span class="nb">str</span><span class="p">):</span>
+        <span class="k">return</span> <span class="n">text</span>
+
+    <span class="c1"># Handle LaTeX math sections (preserve them)</span>
+    <span class="n">latex_sections</span> <span class="o">=</span> <span class="p">[]</span>
+    <span class="n">text_working</span> <span class="o">=</span> <span class="n">text</span>
+
+    <span class="k">if</span> <span class="n">latex_math</span><span class="p">:</span>
+        <span class="c1"># Extract and preserve LaTeX math</span>
+        <span class="c1"># Use ||| delimiters to avoid being processed by _replace_underscores</span>
+        <span class="n">latex_pattern</span> <span class="o">=</span> <span class="sa">r</span><span class="s2">&quot;\$[^$]+\$&quot;</span>
+        <span class="n">latex_matches</span> <span class="o">=</span> <span class="n">re</span><span class="o">.</span><span class="n">findall</span><span class="p">(</span><span class="n">latex_pattern</span><span class="p">,</span> <span class="n">text</span><span class="p">)</span>
+        <span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="n">match</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">latex_matches</span><span class="p">):</span>
+            <span class="n">placeholder</span> <span class="o">=</span> <span class="sa">f</span><span class="s2">&quot;|||LATEX</span><span class="si">{</span><span class="n">i</span><span class="si">}</span><span class="s2">|||&quot;</span>
+            <span class="n">latex_sections</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">match</span><span class="p">)</span>
+            <span class="n">text_working</span> <span class="o">=</span> <span class="n">text_working</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="n">match</span><span class="p">,</span> <span class="n">placeholder</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
+
+    <span class="c1"># Replace underscores with spaces (before unit formatting)</span>
+    <span class="k">if</span> <span class="n">replace_underscores</span><span class="p">:</span>
+        <span class="n">text_working</span> <span class="o">=</span> <span class="n">_replace_underscores</span><span class="p">(</span><span class="n">text_working</span><span class="p">)</span>
+
+    <span class="c1"># Format units</span>
+    <span class="n">text_working</span> <span class="o">=</span> <span class="n">_format_units</span><span class="p">(</span><span class="n">text_working</span><span class="p">,</span> <span class="n">unit_style</span><span class="p">)</span>
+
+    <span class="c1"># Capitalize first letter (excluding LaTeX)</span>
+    <span class="k">if</span> <span class="n">capitalize</span><span class="p">:</span>
+        <span class="n">text_working</span> <span class="o">=</span> <span class="n">_capitalize_text</span><span class="p">(</span><span class="n">text_working</span><span class="p">)</span>
+
+    <span class="c1"># Handle scientific notation</span>
+    <span class="k">if</span> <span class="n">scientific_notation</span><span class="p">:</span>
+        <span class="n">text_working</span> <span class="o">=</span> <span class="n">_format_scientific_notation</span><span class="p">(</span><span class="n">text_working</span><span class="p">)</span>
+
+    <span class="c1"># Restore LaTeX sections with fallback handling</span>
+    <span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="n">latex_section</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">latex_sections</span><span class="p">):</span>
+        <span class="n">placeholder</span> <span class="o">=</span> <span class="sa">f</span><span class="s2">&quot;|||LATEX</span><span class="si">{</span><span class="n">i</span><span class="si">}</span><span class="s2">|||&quot;</span>
+        <span class="k">if</span> <span class="n">enable_fallback</span> <span class="ow">and</span> <span class="n">FALLBACK_AVAILABLE</span><span class="p">:</span>
+            <span class="c1"># Apply fallback to LaTeX sections</span>
+            <span class="n">safe_latex</span> <span class="o">=</span> <span class="n">safe_latex_render</span><span class="p">(</span><span class="n">latex_section</span><span class="p">,</span> <span class="n">preserve_math</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+            <span class="n">text_working</span> <span class="o">=</span> <span class="n">text_working</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="n">placeholder</span><span class="p">,</span> <span class="n">safe_latex</span><span class="p">)</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">text_working</span> <span class="o">=</span> <span class="n">text_working</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="n">placeholder</span><span class="p">,</span> <span class="n">latex_section</span><span class="p">)</span>
+
+    <span class="k">return</span> <span class="n">text_working</span></div>
+
+
+
+<div class="viewcode-block" id="format_axis_label">
+<a class="viewcode-back" href="../../api/scitex_str.html#scitex_str.format_axis_label">[docs]</a>
+<span class="nd">@latex_fallback_decorator</span><span class="p">(</span><span class="n">fallback_strategy</span><span class="o">=</span><span class="s2">&quot;auto&quot;</span><span class="p">,</span> <span class="n">preserve_math</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">format_axis_label</span><span class="p">(</span>
+    <span class="n">label</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span>
+    <span class="n">unit</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">str</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+    <span class="n">unit_style</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="s2">&quot;parentheses&quot;</span><span class="p">,</span>
+    <span class="n">capitalize</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">True</span><span class="p">,</span>
+    <span class="n">latex_math</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">True</span><span class="p">,</span>
+    <span class="n">enable_fallback</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">True</span><span class="p">,</span>
+    <span class="n">replace_underscores</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">True</span><span class="p">,</span>
+<span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Format axis labels with proper unit handling.</span>
+
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------</span>
+<span class="sd">    label : str</span>
+<span class="sd">        The variable name or description</span>
+<span class="sd">    unit : Optional[str], optional</span>
+<span class="sd">        The unit string, by default None</span>
+<span class="sd">    unit_style : str, optional</span>
+<span class="sd">        Unit bracket style, by default &quot;parentheses&quot;</span>
+<span class="sd">    capitalize : bool, optional</span>
+<span class="sd">        Whether to capitalize, by default True</span>
+<span class="sd">    latex_math : bool, optional</span>
+<span class="sd">        Whether to enable LaTeX math, by default True</span>
+<span class="sd">    enable_fallback : bool, optional</span>
+<span class="sd">        Whether to enable LaTeX fallback mechanisms, by default True</span>
+<span class="sd">    replace_underscores : bool, optional</span>
+<span class="sd">        Whether to replace underscores with spaces, by default True</span>
+
+<span class="sd">    Returns</span>
+<span class="sd">    -------</span>
+<span class="sd">    str</span>
+<span class="sd">        Formatted axis label with automatic LaTeX fallback</span>
+
+<span class="sd">    Examples</span>
+<span class="sd">    --------</span>
+<span class="sd">    &gt;&gt;&gt; format_axis_label(&quot;time&quot;, &quot;s&quot;)</span>
+<span class="sd">    &#39;Time (s)&#39;</span>
+
+<span class="sd">    &gt;&gt;&gt; format_axis_label(&quot;voltage&quot;, &quot;V&quot;, unit_style=&quot;brackets&quot;)</span>
+<span class="sd">    &#39;Voltage [V]&#39;</span>
+
+<span class="sd">    &gt;&gt;&gt; format_axis_label(&quot;temperature&quot;, &quot;°C&quot;)</span>
+<span class="sd">    &#39;Temperature (°C)&#39;</span>
+
+<span class="sd">    &gt;&gt;&gt; format_axis_label(&quot;signal_power&quot;, &quot;dB&quot;)</span>
+<span class="sd">    &#39;Signal Power (dB)&#39;</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">if</span> <span class="n">unit</span><span class="p">:</span>
+        <span class="k">if</span> <span class="n">unit_style</span> <span class="o">==</span> <span class="s2">&quot;brackets&quot;</span><span class="p">:</span>
+            <span class="n">full_text</span> <span class="o">=</span> <span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">label</span><span class="si">}</span><span class="s2"> [</span><span class="si">{</span><span class="n">unit</span><span class="si">}</span><span class="s2">]&quot;</span>
+        <span class="k">else</span><span class="p">:</span>  <span class="c1"># parentheses</span>
+            <span class="n">full_text</span> <span class="o">=</span> <span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">label</span><span class="si">}</span><span class="s2"> (</span><span class="si">{</span><span class="n">unit</span><span class="si">}</span><span class="s2">)&quot;</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="n">full_text</span> <span class="o">=</span> <span class="n">label</span>
+
+    <span class="k">return</span> <span class="n">format_plot_text</span><span class="p">(</span>
+        <span class="n">full_text</span><span class="p">,</span>
+        <span class="n">capitalize</span><span class="p">,</span>
+        <span class="n">unit_style</span><span class="p">,</span>
+        <span class="n">latex_math</span><span class="p">,</span>
+        <span class="n">scientific_notation</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+        <span class="n">enable_fallback</span><span class="o">=</span><span class="n">enable_fallback</span><span class="p">,</span>
+        <span class="n">replace_underscores</span><span class="o">=</span><span class="n">replace_underscores</span><span class="p">,</span>
+    <span class="p">)</span></div>
+
+
+
+<div class="viewcode-block" id="format_title">
+<a class="viewcode-back" href="../../api/scitex_str.html#scitex_str.format_title">[docs]</a>
+<span class="nd">@latex_fallback_decorator</span><span class="p">(</span><span class="n">fallback_strategy</span><span class="o">=</span><span class="s2">&quot;auto&quot;</span><span class="p">,</span> <span class="n">preserve_math</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">format_title</span><span class="p">(</span>
+    <span class="n">title</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span>
+    <span class="n">subtitle</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">str</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+    <span class="n">capitalize</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">True</span><span class="p">,</span>
+    <span class="n">latex_math</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">True</span><span class="p">,</span>
+    <span class="n">enable_fallback</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">True</span><span class="p">,</span>
+    <span class="n">replace_underscores</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">True</span><span class="p">,</span>
+<span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Format plot titles with proper conventions.</span>
+
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------</span>
+<span class="sd">    title : str</span>
+<span class="sd">        Main title text</span>
+<span class="sd">    subtitle : Optional[str], optional</span>
+<span class="sd">        Subtitle text, by default None</span>
+<span class="sd">    capitalize : bool, optional</span>
+<span class="sd">        Whether to capitalize, by default True</span>
+<span class="sd">    latex_math : bool, optional</span>
+<span class="sd">        Whether to enable LaTeX math, by default True</span>
+<span class="sd">    enable_fallback : bool, optional</span>
+<span class="sd">        Whether to enable LaTeX fallback mechanisms, by default True</span>
+<span class="sd">    replace_underscores : bool, optional</span>
+<span class="sd">        Whether to replace underscores with spaces, by default True</span>
+
+<span class="sd">    Returns</span>
+<span class="sd">    -------</span>
+<span class="sd">    str</span>
+<span class="sd">        Formatted title with automatic LaTeX fallback</span>
+
+<span class="sd">    Examples</span>
+<span class="sd">    --------</span>
+<span class="sd">    &gt;&gt;&gt; format_title(&quot;neural spike analysis&quot;)</span>
+<span class="sd">    &#39;Neural Spike Analysis&#39;</span>
+
+<span class="sd">    &gt;&gt;&gt; format_title(&quot;data analysis&quot;, &quot;preliminary results&quot;)</span>
+<span class="sd">    &#39;Data Analysis\\nPreliminary Results&#39;</span>
+
+<span class="sd">    &gt;&gt;&gt; format_title(&quot;signal_processing_results&quot;)</span>
+<span class="sd">    &#39;Signal Processing Results&#39;</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">formatted_title</span> <span class="o">=</span> <span class="n">format_plot_text</span><span class="p">(</span>
+        <span class="n">title</span><span class="p">,</span>
+        <span class="n">capitalize</span><span class="p">,</span>
+        <span class="n">latex_math</span><span class="o">=</span><span class="n">latex_math</span><span class="p">,</span>
+        <span class="n">enable_fallback</span><span class="o">=</span><span class="n">enable_fallback</span><span class="p">,</span>
+        <span class="n">replace_underscores</span><span class="o">=</span><span class="n">replace_underscores</span><span class="p">,</span>
+    <span class="p">)</span>
+
+    <span class="k">if</span> <span class="n">subtitle</span><span class="p">:</span>
+        <span class="n">formatted_subtitle</span> <span class="o">=</span> <span class="n">format_plot_text</span><span class="p">(</span>
+            <span class="n">subtitle</span><span class="p">,</span>
+            <span class="n">capitalize</span><span class="p">,</span>
+            <span class="n">latex_math</span><span class="o">=</span><span class="n">latex_math</span><span class="p">,</span>
+            <span class="n">enable_fallback</span><span class="o">=</span><span class="n">enable_fallback</span><span class="p">,</span>
+            <span class="n">replace_underscores</span><span class="o">=</span><span class="n">replace_underscores</span><span class="p">,</span>
+        <span class="p">)</span>
+        <span class="k">return</span> <span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">formatted_title</span><span class="si">}</span><span class="se">\\</span><span class="s2">n</span><span class="si">{</span><span class="n">formatted_subtitle</span><span class="si">}</span><span class="s2">&quot;</span>
+
+    <span class="k">return</span> <span class="n">formatted_title</span></div>
+
+
+
+<div class="viewcode-block" id="check_unit_consistency">
+<a class="viewcode-back" href="../../api/scitex_str.html#scitex_str.check_unit_consistency">[docs]</a>
+<span class="k">def</span><span class="w"> </span><span class="nf">check_unit_consistency</span><span class="p">(</span>
+    <span class="n">x_unit</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">str</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span> <span class="n">y_unit</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">str</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span> <span class="n">operation</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="s2">&quot;none&quot;</span>
+<span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Tuple</span><span class="p">[</span><span class="nb">bool</span><span class="p">,</span> <span class="nb">str</span><span class="p">]:</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Check unit consistency for mathematical operations.</span>
+
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------</span>
+<span class="sd">    x_unit : Optional[str], optional</span>
+<span class="sd">        X-axis unit, by default None</span>
+<span class="sd">    y_unit : Optional[str], optional</span>
+<span class="sd">        Y-axis unit, by default None</span>
+<span class="sd">    operation : str, optional</span>
+<span class="sd">        Mathematical operation: &quot;add&quot;, &quot;subtract&quot;, &quot;multiply&quot;, &quot;divide&quot;, &quot;none&quot;, by default &quot;none&quot;</span>
+
+<span class="sd">    Returns</span>
+<span class="sd">    -------</span>
+<span class="sd">    Tuple[bool, str]</span>
+<span class="sd">        (is_consistent, expected_result_unit)</span>
+
+<span class="sd">    Examples</span>
+<span class="sd">    --------</span>
+<span class="sd">    &gt;&gt;&gt; check_unit_consistency(&quot;m&quot;, &quot;s&quot;, &quot;divide&quot;)</span>
+<span class="sd">    (True, &#39;m/s&#39;)</span>
+
+<span class="sd">    &gt;&gt;&gt; check_unit_consistency(&quot;m&quot;, &quot;m&quot;, &quot;add&quot;)</span>
+<span class="sd">    (True, &#39;m&#39;)</span>
+
+<span class="sd">    &gt;&gt;&gt; check_unit_consistency(&quot;m&quot;, &quot;kg&quot;, &quot;add&quot;)</span>
+<span class="sd">    (False, &#39;Units incompatible for addition&#39;)</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">if</span> <span class="ow">not</span> <span class="n">x_unit</span> <span class="ow">or</span> <span class="ow">not</span> <span class="n">y_unit</span><span class="p">:</span>
+        <span class="k">return</span> <span class="kc">True</span><span class="p">,</span> <span class="n">x_unit</span> <span class="ow">or</span> <span class="n">y_unit</span> <span class="ow">or</span> <span class="s2">&quot;&quot;</span>
+
+    <span class="c1"># Normalize units</span>
+    <span class="n">x_norm</span> <span class="o">=</span> <span class="n">_normalize_unit</span><span class="p">(</span><span class="n">x_unit</span><span class="p">)</span>
+    <span class="n">y_norm</span> <span class="o">=</span> <span class="n">_normalize_unit</span><span class="p">(</span><span class="n">y_unit</span><span class="p">)</span>
+
+    <span class="k">if</span> <span class="n">operation</span> <span class="ow">in</span> <span class="p">[</span><span class="s2">&quot;add&quot;</span><span class="p">,</span> <span class="s2">&quot;subtract&quot;</span><span class="p">]:</span>
+        <span class="k">if</span> <span class="n">x_norm</span> <span class="o">==</span> <span class="n">y_norm</span><span class="p">:</span>
+            <span class="k">return</span> <span class="kc">True</span><span class="p">,</span> <span class="n">x_unit</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="k">return</span> <span class="kc">False</span><span class="p">,</span> <span class="sa">f</span><span class="s2">&quot;Units incompatible for </span><span class="si">{</span><span class="n">operation</span><span class="si">}</span><span class="s2">&quot;</span>
+
+    <span class="k">elif</span> <span class="n">operation</span> <span class="o">==</span> <span class="s2">&quot;multiply&quot;</span><span class="p">:</span>
+        <span class="k">if</span> <span class="n">x_norm</span> <span class="o">==</span> <span class="s2">&quot;1&quot;</span> <span class="ow">or</span> <span class="n">y_norm</span> <span class="o">==</span> <span class="s2">&quot;1&quot;</span><span class="p">:</span>  <span class="c1"># dimensionless</span>
+            <span class="k">return</span> <span class="kc">True</span><span class="p">,</span> <span class="n">x_unit</span> <span class="k">if</span> <span class="n">x_norm</span> <span class="o">!=</span> <span class="s2">&quot;1&quot;</span> <span class="k">else</span> <span class="n">y_unit</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="k">return</span> <span class="kc">True</span><span class="p">,</span> <span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">x_unit</span><span class="si">}</span><span class="s2">·</span><span class="si">{</span><span class="n">y_unit</span><span class="si">}</span><span class="s2">&quot;</span>
+
+    <span class="k">elif</span> <span class="n">operation</span> <span class="o">==</span> <span class="s2">&quot;divide&quot;</span><span class="p">:</span>
+        <span class="k">if</span> <span class="n">y_norm</span> <span class="o">==</span> <span class="s2">&quot;1&quot;</span><span class="p">:</span>  <span class="c1"># dividing by dimensionless</span>
+            <span class="k">return</span> <span class="kc">True</span><span class="p">,</span> <span class="n">x_unit</span>
+        <span class="k">elif</span> <span class="n">x_norm</span> <span class="o">==</span> <span class="n">y_norm</span><span class="p">:</span>
+            <span class="k">return</span> <span class="kc">True</span><span class="p">,</span> <span class="s2">&quot;1&quot;</span>  <span class="c1"># dimensionless</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="k">return</span> <span class="kc">True</span><span class="p">,</span> <span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">x_unit</span><span class="si">}</span><span class="s2">/</span><span class="si">{</span><span class="n">y_unit</span><span class="si">}</span><span class="s2">&quot;</span>
+
+    <span class="k">return</span> <span class="kc">True</span><span class="p">,</span> <span class="s2">&quot;&quot;</span></div>
+
+
+
+<span class="k">def</span><span class="w"> </span><span class="nf">_format_units</span><span class="p">(</span><span class="n">text</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">unit_style</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Format units in text according to specified style.&quot;&quot;&quot;</span>
+    <span class="k">if</span> <span class="n">unit_style</span> <span class="o">==</span> <span class="s2">&quot;auto&quot;</span><span class="p">:</span>
+        <span class="c1"># Auto-detect and standardize to parentheses</span>
+        <span class="c1"># Look for common unit patterns</span>
+        <span class="n">unit_patterns</span> <span class="o">=</span> <span class="p">[</span>
+            <span class="sa">r</span><span class="s2">&quot;\s+in\s+([A-Za-z°µ²³⁻⁺]+)&quot;</span><span class="p">,</span>  <span class="c1"># &quot;in Hz&quot;, &quot;in μV&quot;, etc.</span>
+            <span class="sa">r</span><span class="s2">&quot;\s+\[([^\]]+)\]&quot;</span><span class="p">,</span>  <span class="c1"># [unit]</span>
+            <span class="sa">r</span><span class="s2">&quot;\s+\(([^)]+)\)&quot;</span><span class="p">,</span>  <span class="c1"># (unit)</span>
+        <span class="p">]</span>
+
+        <span class="k">for</span> <span class="n">pattern</span> <span class="ow">in</span> <span class="n">unit_patterns</span><span class="p">:</span>
+            <span class="n">match</span> <span class="o">=</span> <span class="n">re</span><span class="o">.</span><span class="n">search</span><span class="p">(</span><span class="n">pattern</span><span class="p">,</span> <span class="n">text</span><span class="p">)</span>
+            <span class="k">if</span> <span class="n">match</span><span class="p">:</span>
+                <span class="n">unit</span> <span class="o">=</span> <span class="n">match</span><span class="o">.</span><span class="n">group</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
+                <span class="c1"># Replace with standardized format</span>
+                <span class="n">text</span> <span class="o">=</span> <span class="n">re</span><span class="o">.</span><span class="n">sub</span><span class="p">(</span><span class="n">pattern</span><span class="p">,</span> <span class="sa">f</span><span class="s2">&quot; (</span><span class="si">{</span><span class="n">unit</span><span class="si">}</span><span class="s2">)&quot;</span><span class="p">,</span> <span class="n">text</span><span class="p">)</span>
+                <span class="k">break</span>
+
+    <span class="k">elif</span> <span class="n">unit_style</span> <span class="o">==</span> <span class="s2">&quot;brackets&quot;</span><span class="p">:</span>
+        <span class="c1"># Convert parentheses to brackets</span>
+        <span class="n">text</span> <span class="o">=</span> <span class="n">re</span><span class="o">.</span><span class="n">sub</span><span class="p">(</span><span class="sa">r</span><span class="s2">&quot;\s*\(([^)]+)\)&quot;</span><span class="p">,</span> <span class="sa">r</span><span class="s2">&quot; [\1]&quot;</span><span class="p">,</span> <span class="n">text</span><span class="p">)</span>
+
+    <span class="c1"># Clean up multiple spaces</span>
+    <span class="n">text</span> <span class="o">=</span> <span class="n">re</span><span class="o">.</span><span class="n">sub</span><span class="p">(</span><span class="sa">r</span><span class="s2">&quot;\s+&quot;</span><span class="p">,</span> <span class="s2">&quot; &quot;</span><span class="p">,</span> <span class="n">text</span><span class="p">)</span><span class="o">.</span><span class="n">strip</span><span class="p">()</span>
+
+    <span class="k">return</span> <span class="n">text</span>
+
+
+<span class="k">def</span><span class="w"> </span><span class="nf">_capitalize_text</span><span class="p">(</span><span class="n">text</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Capitalize the first letter of text, preserving units in parentheses/brackets.&quot;&quot;&quot;</span>
+    <span class="k">if</span> <span class="ow">not</span> <span class="n">text</span><span class="p">:</span>
+        <span class="k">return</span> <span class="n">text</span>
+
+    <span class="c1"># Preserve content in parentheses and brackets</span>
+    <span class="n">preserved_sections</span> <span class="o">=</span> <span class="p">[]</span>
+
+    <span class="c1"># Find and preserve parentheses content</span>
+    <span class="n">paren_pattern</span> <span class="o">=</span> <span class="sa">r</span><span class="s2">&quot;(\([^)]+\))&quot;</span>
+    <span class="n">paren_matches</span> <span class="o">=</span> <span class="n">re</span><span class="o">.</span><span class="n">findall</span><span class="p">(</span><span class="n">paren_pattern</span><span class="p">,</span> <span class="n">text</span><span class="p">)</span>
+    <span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="n">match</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">paren_matches</span><span class="p">):</span>
+        <span class="n">placeholder</span> <span class="o">=</span> <span class="sa">f</span><span class="s2">&quot;__PAREN_</span><span class="si">{</span><span class="n">i</span><span class="si">}</span><span class="s2">__&quot;</span>
+        <span class="n">preserved_sections</span><span class="o">.</span><span class="n">append</span><span class="p">((</span><span class="n">placeholder</span><span class="p">,</span> <span class="n">match</span><span class="p">))</span>
+        <span class="n">text</span> <span class="o">=</span> <span class="n">text</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="n">match</span><span class="p">,</span> <span class="n">placeholder</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
+
+    <span class="c1"># Find and preserve bracket content</span>
+    <span class="n">bracket_pattern</span> <span class="o">=</span> <span class="sa">r</span><span class="s2">&quot;(\[[^\]]+\])&quot;</span>
+    <span class="n">bracket_matches</span> <span class="o">=</span> <span class="n">re</span><span class="o">.</span><span class="n">findall</span><span class="p">(</span><span class="n">bracket_pattern</span><span class="p">,</span> <span class="n">text</span><span class="p">)</span>
+    <span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="n">match</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">bracket_matches</span><span class="p">):</span>
+        <span class="n">placeholder</span> <span class="o">=</span> <span class="sa">f</span><span class="s2">&quot;__BRACKET_</span><span class="si">{</span><span class="n">i</span><span class="si">}</span><span class="s2">__&quot;</span>
+        <span class="n">preserved_sections</span><span class="o">.</span><span class="n">append</span><span class="p">((</span><span class="n">placeholder</span><span class="p">,</span> <span class="n">match</span><span class="p">))</span>
+        <span class="n">text</span> <span class="o">=</span> <span class="n">text</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="n">match</span><span class="p">,</span> <span class="n">placeholder</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
+
+    <span class="c1"># Capitalize the first alphabetic character</span>
+    <span class="n">capitalized</span> <span class="o">=</span> <span class="kc">False</span>
+    <span class="n">result</span> <span class="o">=</span> <span class="p">[]</span>
+    <span class="k">for</span> <span class="n">char</span> <span class="ow">in</span> <span class="n">text</span><span class="p">:</span>
+        <span class="k">if</span> <span class="ow">not</span> <span class="n">capitalized</span> <span class="ow">and</span> <span class="n">char</span><span class="o">.</span><span class="n">isalpha</span><span class="p">():</span>
+            <span class="n">result</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">char</span><span class="o">.</span><span class="n">upper</span><span class="p">())</span>
+            <span class="n">capitalized</span> <span class="o">=</span> <span class="kc">True</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">result</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">char</span><span class="p">)</span>
+
+    <span class="n">text</span> <span class="o">=</span> <span class="s2">&quot;&quot;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">result</span><span class="p">)</span>
+
+    <span class="c1"># Restore preserved sections</span>
+    <span class="k">for</span> <span class="n">placeholder</span><span class="p">,</span> <span class="n">original</span> <span class="ow">in</span> <span class="n">preserved_sections</span><span class="p">:</span>
+        <span class="n">text</span> <span class="o">=</span> <span class="n">text</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="n">placeholder</span><span class="p">,</span> <span class="n">original</span><span class="p">)</span>
+
+    <span class="k">return</span> <span class="n">text</span>
+
+
+<span class="k">def</span><span class="w"> </span><span class="nf">_format_scientific_notation</span><span class="p">(</span><span class="n">text</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Format scientific notation in text.&quot;&quot;&quot;</span>
+    <span class="c1"># Convert patterns like &quot;1e-3&quot; to &quot;1×10⁻³&quot; or LaTeX equivalent</span>
+    <span class="n">sci_pattern</span> <span class="o">=</span> <span class="sa">r</span><span class="s2">&quot;(\d+\.?\d*)[eE]([-+]?\d+)&quot;</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="nf">replace_sci</span><span class="p">(</span><span class="n">match</span><span class="p">):</span>
+        <span class="n">base</span> <span class="o">=</span> <span class="n">match</span><span class="o">.</span><span class="n">group</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
+        <span class="n">exp</span> <span class="o">=</span> <span class="n">match</span><span class="o">.</span><span class="n">group</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span>
+        <span class="c1"># Use LaTeX format</span>
+        <span class="k">return</span> <span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">base</span><span class="si">}</span><span class="s2">×10^</span><span class="se">{{</span><span class="si">{</span><span class="n">exp</span><span class="si">}</span><span class="se">}}</span><span class="s2">&quot;</span>
+
+    <span class="k">return</span> <span class="n">re</span><span class="o">.</span><span class="n">sub</span><span class="p">(</span><span class="n">sci_pattern</span><span class="p">,</span> <span class="n">replace_sci</span><span class="p">,</span> <span class="n">text</span><span class="p">)</span>
+
+
+<span class="k">def</span><span class="w"> </span><span class="nf">_replace_underscores</span><span class="p">(</span><span class="n">text</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Replace underscores with spaces and apply proper word capitalization.&quot;&quot;&quot;</span>
+    <span class="c1"># First, preserve content in parentheses and brackets</span>
+    <span class="n">preserved_sections</span> <span class="o">=</span> <span class="p">[]</span>
+
+    <span class="c1"># Preserve parentheses content</span>
+    <span class="n">paren_pattern</span> <span class="o">=</span> <span class="sa">r</span><span class="s2">&quot;(\([^)]+\))&quot;</span>
+    <span class="n">paren_matches</span> <span class="o">=</span> <span class="n">re</span><span class="o">.</span><span class="n">findall</span><span class="p">(</span><span class="n">paren_pattern</span><span class="p">,</span> <span class="n">text</span><span class="p">)</span>
+    <span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="n">match</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">paren_matches</span><span class="p">):</span>
+        <span class="n">placeholder</span> <span class="o">=</span> <span class="sa">f</span><span class="s2">&quot;|||PAREN</span><span class="si">{</span><span class="n">i</span><span class="si">}</span><span class="s2">|||&quot;</span>
+        <span class="n">preserved_sections</span><span class="o">.</span><span class="n">append</span><span class="p">((</span><span class="n">placeholder</span><span class="p">,</span> <span class="n">match</span><span class="p">))</span>
+        <span class="n">text</span> <span class="o">=</span> <span class="n">text</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="n">match</span><span class="p">,</span> <span class="n">placeholder</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
+
+    <span class="c1"># Preserve bracket content</span>
+    <span class="n">bracket_pattern</span> <span class="o">=</span> <span class="sa">r</span><span class="s2">&quot;(\[[^\]]+\])&quot;</span>
+    <span class="n">bracket_matches</span> <span class="o">=</span> <span class="n">re</span><span class="o">.</span><span class="n">findall</span><span class="p">(</span><span class="n">bracket_pattern</span><span class="p">,</span> <span class="n">text</span><span class="p">)</span>
+    <span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="n">match</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">bracket_matches</span><span class="p">):</span>
+        <span class="n">placeholder</span> <span class="o">=</span> <span class="sa">f</span><span class="s2">&quot;|||BRACKET</span><span class="si">{</span><span class="n">i</span><span class="si">}</span><span class="s2">|||&quot;</span>
+        <span class="n">preserved_sections</span><span class="o">.</span><span class="n">append</span><span class="p">((</span><span class="n">placeholder</span><span class="p">,</span> <span class="n">match</span><span class="p">))</span>
+        <span class="n">text</span> <span class="o">=</span> <span class="n">text</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="n">match</span><span class="p">,</span> <span class="n">placeholder</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
+
+    <span class="c1"># Replace underscores with spaces</span>
+    <span class="n">text_with_spaces</span> <span class="o">=</span> <span class="n">text</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s2">&quot;_&quot;</span><span class="p">,</span> <span class="s2">&quot; &quot;</span><span class="p">)</span>
+
+    <span class="c1"># Split by spaces for word processing</span>
+    <span class="n">words</span> <span class="o">=</span> <span class="n">text_with_spaces</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s2">&quot; &quot;</span><span class="p">)</span>
+
+    <span class="c1"># Common units that should preserve their case</span>
+    <span class="n">common_units</span> <span class="o">=</span> <span class="p">{</span>
+        <span class="s2">&quot;Hz&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;kHz&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;MHz&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;GHz&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;V&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;mV&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;uV&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;μV&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;A&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;mA&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;μA&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;W&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;mW&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;dB&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;dBm&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;s&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;ms&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;μs&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;ns&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;ps&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;K&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;C&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;F&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;rad&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;deg&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;m&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;cm&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;mm&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;μm&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;nm&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;kg&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;g&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;mg&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;μg&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;N&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;Pa&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;bar&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;psi&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;mol&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;M&quot;</span><span class="p">,</span>
+    <span class="p">}</span>
+
+    <span class="c1"># Process each word</span>
+    <span class="n">formatted_words</span> <span class="o">=</span> <span class="p">[]</span>
+    <span class="k">for</span> <span class="n">word</span> <span class="ow">in</span> <span class="n">words</span><span class="p">:</span>
+        <span class="k">if</span> <span class="ow">not</span> <span class="n">word</span><span class="p">:</span>  <span class="c1"># Preserve empty strings (from consecutive underscores)</span>
+            <span class="n">formatted_words</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;&quot;</span><span class="p">)</span>
+        <span class="c1"># Skip placeholders</span>
+        <span class="k">elif</span> <span class="s2">&quot;|||&quot;</span> <span class="ow">in</span> <span class="n">word</span><span class="p">:</span>
+            <span class="n">formatted_words</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">word</span><span class="p">)</span>
+        <span class="c1"># Check if word is a known unit</span>
+        <span class="k">elif</span> <span class="n">word</span> <span class="ow">in</span> <span class="n">common_units</span><span class="p">:</span>
+            <span class="n">formatted_words</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">word</span><span class="p">)</span>
+        <span class="c1"># Preserve special cases (e.g., all caps like &quot;DB&quot;, &quot;ID&quot;, etc.)</span>
+        <span class="k">elif</span> <span class="n">word</span><span class="o">.</span><span class="n">isupper</span><span class="p">()</span> <span class="ow">and</span> <span class="nb">len</span><span class="p">(</span><span class="n">word</span><span class="p">)</span> <span class="o">&gt;</span> <span class="mi">1</span><span class="p">:</span>
+            <span class="n">formatted_words</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">word</span><span class="p">)</span>
+        <span class="c1"># Capitalize first letter of each word</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">formatted_words</span><span class="o">.</span><span class="n">append</span><span class="p">(</span>
+                <span class="n">word</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">upper</span><span class="p">()</span> <span class="o">+</span> <span class="n">word</span><span class="p">[</span><span class="mi">1</span><span class="p">:]</span><span class="o">.</span><span class="n">lower</span><span class="p">()</span> <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">word</span><span class="p">)</span> <span class="o">&gt;</span> <span class="mi">1</span> <span class="k">else</span> <span class="n">word</span><span class="o">.</span><span class="n">upper</span><span class="p">()</span>
+            <span class="p">)</span>
+
+    <span class="c1"># Join with spaces</span>
+    <span class="n">result</span> <span class="o">=</span> <span class="s2">&quot; &quot;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">formatted_words</span><span class="p">)</span>
+
+    <span class="c1"># Restore preserved sections</span>
+    <span class="k">for</span> <span class="n">placeholder</span><span class="p">,</span> <span class="n">original</span> <span class="ow">in</span> <span class="n">preserved_sections</span><span class="p">:</span>
+        <span class="n">result</span> <span class="o">=</span> <span class="n">result</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="n">placeholder</span><span class="p">,</span> <span class="n">original</span><span class="p">)</span>
+
+    <span class="k">return</span> <span class="n">result</span>
+
+
+<span class="k">def</span><span class="w"> </span><span class="nf">_normalize_unit</span><span class="p">(</span><span class="n">unit</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Normalize unit string for comparison.&quot;&quot;&quot;</span>
+    <span class="c1"># Remove brackets/parentheses and normalize</span>
+    <span class="n">normalized</span> <span class="o">=</span> <span class="n">re</span><span class="o">.</span><span class="n">sub</span><span class="p">(</span><span class="sa">r</span><span class="s2">&quot;[\[\]()]&quot;</span><span class="p">,</span> <span class="s2">&quot;&quot;</span><span class="p">,</span> <span class="n">unit</span><span class="p">)</span><span class="o">.</span><span class="n">strip</span><span class="p">()</span><span class="o">.</span><span class="n">lower</span><span class="p">()</span>
+
+    <span class="c1"># Handle common equivalent units</span>
+    <span class="n">equivalents</span> <span class="o">=</span> <span class="p">{</span>
+        <span class="s2">&quot;sec&quot;</span><span class="p">:</span> <span class="s2">&quot;s&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;second&quot;</span><span class="p">:</span> <span class="s2">&quot;s&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;seconds&quot;</span><span class="p">:</span> <span class="s2">&quot;s&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;volt&quot;</span><span class="p">:</span> <span class="s2">&quot;V&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;volts&quot;</span><span class="p">:</span> <span class="s2">&quot;V&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;amp&quot;</span><span class="p">:</span> <span class="s2">&quot;A&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;ampere&quot;</span><span class="p">:</span> <span class="s2">&quot;A&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;amps&quot;</span><span class="p">:</span> <span class="s2">&quot;A&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;meter&quot;</span><span class="p">:</span> <span class="s2">&quot;m&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;meters&quot;</span><span class="p">:</span> <span class="s2">&quot;m&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;metre&quot;</span><span class="p">:</span> <span class="s2">&quot;m&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;metres&quot;</span><span class="p">:</span> <span class="s2">&quot;m&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;gram&quot;</span><span class="p">:</span> <span class="s2">&quot;g&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;grams&quot;</span><span class="p">:</span> <span class="s2">&quot;g&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;hertz&quot;</span><span class="p">:</span> <span class="s2">&quot;Hz&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;hz&quot;</span><span class="p">:</span> <span class="s2">&quot;Hz&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;dimensionless&quot;</span><span class="p">:</span> <span class="s2">&quot;1&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;unitless&quot;</span><span class="p">:</span> <span class="s2">&quot;1&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;&quot;</span><span class="p">:</span> <span class="s2">&quot;1&quot;</span><span class="p">,</span>
+    <span class="p">}</span>
+
+    <span class="k">return</span> <span class="n">equivalents</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">normalized</span><span class="p">,</span> <span class="n">normalized</span><span class="p">)</span>
+
+
+<span class="c1"># Convenient aliases and shortcuts</span>
+<div class="viewcode-block" id="axis_label">
+<a class="viewcode-back" href="../../api/scitex_str.html#scitex_str.axis_label">[docs]</a>
+<span class="k">def</span><span class="w"> </span><span class="nf">axis_label</span><span class="p">(</span><span class="n">label</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">unit</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Convenient alias for format_axis_label.&quot;&quot;&quot;</span>
+    <span class="k">return</span> <span class="n">format_axis_label</span><span class="p">(</span><span class="n">label</span><span class="p">,</span> <span class="n">unit</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span></div>
+
+
+
+<div class="viewcode-block" id="title">
+<a class="viewcode-back" href="../../api/scitex_str.html#scitex_str.title">[docs]</a>
+<span class="k">def</span><span class="w"> </span><span class="nf">title</span><span class="p">(</span><span class="n">text</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Convenient alias for format_title.&quot;&quot;&quot;</span>
+    <span class="k">return</span> <span class="n">format_title</span><span class="p">(</span><span class="n">text</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span></div>
+
+
+
+<div class="viewcode-block" id="scientific_text">
+<a class="viewcode-back" href="../../api/scitex_str.html#scitex_str.scientific_text">[docs]</a>
+<span class="k">def</span><span class="w"> </span><span class="nf">scientific_text</span><span class="p">(</span><span class="n">text</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Convenient alias for format_plot_text with scientific defaults.&quot;&quot;&quot;</span>
+    <span class="k">return</span> <span class="n">format_plot_text</span><span class="p">(</span><span class="n">text</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span></div>
+
+
+
+<span class="c1"># EOF</span>
+</pre></div>
+
+           </div>
+          </div>
+          <footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2024-2026, Yusuke Watanabe.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

@@ -10,6 +10,7 @@ interfaces:
   skills: 2
   hook: 0
   http: 0
+tags: [scitex-str, scitex-package]
 ---
 
 # scitex-str

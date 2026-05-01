@@ -4,10 +4,10 @@ build-backend = "hatchling.build"
 
 [project]
 name = "scitex-str"
-version = "0.1.1"
+version = "0.1.8"
 description = "Text processing utilities for scientific workflows — LaTeX formatting, colored output, string parsing, and plot text helpers"
 readme = "README.md"
-license = "AGPL-3.0"
+license = "AGPL-3.0-only"
 requires-python = ">=3.10"
 authors = [
     { name = "Yusuke Watanabe", email = "ywatanabe@scitex.ai" },
@@ -26,7 +26,6 @@ classifiers = [
     "Development Status :: 4 - Beta",
     "Environment :: Console",
     "Intended Audience :: Science/Research",
-    "License :: OSI Approved :: GNU Affero General Public License v3",
     "Operating System :: OS Independent",
     "Programming Language :: Python :: 3",
     "Programming Language :: Python :: 3.10",
@@ -39,6 +38,8 @@ classifiers = [
 dependencies = [
     "scitex-dict>=0.1.0",
     "natsort",
+    "numpy",
+    "scitex",
 ]
 
 [project.optional-dependencies]
@@ -63,6 +64,8 @@ all = []
 scitex-str = "scitex_str"
 
 [project.entry-points."scitex_dev.skills"]
+
+scitex-str = "scitex_str"
 
 [project.urls]
 Homepage = "https://github.com/ywatanabe1989/scitex-str"

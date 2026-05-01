@@ -1,0 +1,478 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="../../">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>scitex_str._factor_out_digits &mdash; SciTeX Str v0.1.8</title>
+      <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=b86133f3" />
+      <link rel="stylesheet" type="text/css" href="../../_static/css/theme.css?v=9edc463e" />
+      <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css?v=76b2166b" />
+
+  
+      <script src="../../_static/jquery.js?v=5d32c60e"></script>
+      <script src="../../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="../../_static/documentation_options.js?v=22607128"></script>
+      <script src="../../_static/doctools.js?v=fd6eb6e6"></script>
+      <script src="../../_static/sphinx_highlight.js?v=6ffebe34"></script>
+      <script src="../../_static/clipboard.min.js?v=a7894cd8"></script>
+      <script src="../../_static/copybutton.js?v=f281be69"></script>
+    <script src="../../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../../index.html" class="icon icon-home">
+            SciTeX Str
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Getting Started</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../installation.html">Installation</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../installation.html#requirements">Requirements</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../installation.html#basic-installation">Basic Installation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../installation.html#development">Development</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../quickstart.html">Quickstart</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">API Reference</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../api/scitex_str.html">scitex_str</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../api/scitex_str.html#scitex_str.LaTeXFallbackError"><code class="docutils literal notranslate"><span class="pre">LaTeXFallbackError</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../api/scitex_str.html#scitex_str.add_hat_in_latex_style"><code class="docutils literal notranslate"><span class="pre">add_hat_in_latex_style()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../api/scitex_str.html#scitex_str.auto_factor_axis"><code class="docutils literal notranslate"><span class="pre">auto_factor_axis()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../api/scitex_str.html#scitex_str.axis_label"><code class="docutils literal notranslate"><span class="pre">axis_label()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../api/scitex_str.html#scitex_str.check_latex_capability"><code class="docutils literal notranslate"><span class="pre">check_latex_capability()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../api/scitex_str.html#scitex_str.check_unit_consistency"><code class="docutils literal notranslate"><span class="pre">check_unit_consistency()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../api/scitex_str.html#scitex_str.clean_path"><code class="docutils literal notranslate"><span class="pre">clean_path()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../api/scitex_str.html#scitex_str.color_text"><code class="docutils literal notranslate"><span class="pre">color_text()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../api/scitex_str.html#scitex_str.ct"><code class="docutils literal notranslate"><span class="pre">ct()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../api/scitex_str.html#scitex_str.decapitalize"><code class="docutils literal notranslate"><span class="pre">decapitalize()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../api/scitex_str.html#scitex_str.disable_latex_fallback"><code class="docutils literal notranslate"><span class="pre">disable_latex_fallback()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../api/scitex_str.html#scitex_str.enable_latex_fallback"><code class="docutils literal notranslate"><span class="pre">enable_latex_fallback()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../api/scitex_str.html#scitex_str.factor_out_digits"><code class="docutils literal notranslate"><span class="pre">factor_out_digits()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../api/scitex_str.html#scitex_str.format_axis_label"><code class="docutils literal notranslate"><span class="pre">format_axis_label()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../api/scitex_str.html#scitex_str.format_plot_text"><code class="docutils literal notranslate"><span class="pre">format_plot_text()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../api/scitex_str.html#scitex_str.format_title"><code class="docutils literal notranslate"><span class="pre">format_title()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../api/scitex_str.html#scitex_str.get_fallback_mode"><code class="docutils literal notranslate"><span class="pre">get_fallback_mode()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../api/scitex_str.html#scitex_str.get_latex_status"><code class="docutils literal notranslate"><span class="pre">get_latex_status()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../api/scitex_str.html#scitex_str.grep"><code class="docutils literal notranslate"><span class="pre">grep()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../api/scitex_str.html#scitex_str.hat_latex_style"><code class="docutils literal notranslate"><span class="pre">hat_latex_style()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../api/scitex_str.html#scitex_str.latex_fallback_decorator"><code class="docutils literal notranslate"><span class="pre">latex_fallback_decorator()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../api/scitex_str.html#scitex_str.latex_style"><code class="docutils literal notranslate"><span class="pre">latex_style()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../api/scitex_str.html#scitex_str.latex_to_mathtext"><code class="docutils literal notranslate"><span class="pre">latex_to_mathtext()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../api/scitex_str.html#scitex_str.latex_to_unicode"><code class="docutils literal notranslate"><span class="pre">latex_to_unicode()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../api/scitex_str.html#scitex_str.mask_api"><code class="docutils literal notranslate"><span class="pre">mask_api()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../api/scitex_str.html#scitex_str.parse"><code class="docutils literal notranslate"><span class="pre">parse()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../api/scitex_str.html#scitex_str.print_debug"><code class="docutils literal notranslate"><span class="pre">print_debug()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../api/scitex_str.html#scitex_str.printc"><code class="docutils literal notranslate"><span class="pre">printc()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../api/scitex_str.html#scitex_str.readable_bytes"><code class="docutils literal notranslate"><span class="pre">readable_bytes()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../api/scitex_str.html#scitex_str.remove_ansi"><code class="docutils literal notranslate"><span class="pre">remove_ansi()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../api/scitex_str.html#scitex_str.replace"><code class="docutils literal notranslate"><span class="pre">replace()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../api/scitex_str.html#scitex_str.reset_latex_cache"><code class="docutils literal notranslate"><span class="pre">reset_latex_cache()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../api/scitex_str.html#scitex_str.safe_add_hat_in_latex_style"><code class="docutils literal notranslate"><span class="pre">safe_add_hat_in_latex_style()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../api/scitex_str.html#scitex_str.safe_latex_render"><code class="docutils literal notranslate"><span class="pre">safe_latex_render()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../api/scitex_str.html#scitex_str.safe_to_latex_style"><code class="docutils literal notranslate"><span class="pre">safe_to_latex_style()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../api/scitex_str.html#scitex_str.scientific_text"><code class="docutils literal notranslate"><span class="pre">scientific_text()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../api/scitex_str.html#scitex_str.search"><code class="docutils literal notranslate"><span class="pre">search()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../api/scitex_str.html#scitex_str.set_fallback_mode"><code class="docutils literal notranslate"><span class="pre">set_fallback_mode()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../api/scitex_str.html#scitex_str.smart_tick_formatter"><code class="docutils literal notranslate"><span class="pre">smart_tick_formatter()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../api/scitex_str.html#scitex_str.squeeze_spaces"><code class="docutils literal notranslate"><span class="pre">squeeze_spaces()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../api/scitex_str.html#scitex_str.title"><code class="docutils literal notranslate"><span class="pre">title()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../api/scitex_str.html#scitex_str.title_case"><code class="docutils literal notranslate"><span class="pre">title_case()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../api/scitex_str.html#scitex_str.to_latex_style"><code class="docutils literal notranslate"><span class="pre">to_latex_style()</span></code></a></li>
+</ul>
+</li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../index.html">SciTeX Str</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../../index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="../index.html">Module code</a></li>
+      <li class="breadcrumb-item active">scitex_str._factor_out_digits</li>
+      <li class="wy-breadcrumbs-aside">
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <h1>Source code for scitex_str._factor_out_digits</h1><div class="highlight"><pre>
+<span></span><span class="ch">#!/usr/bin/env python3</span>
+<span class="c1"># -*- coding: utf-8 -*-</span>
+<span class="c1"># Time-stamp: &quot;2025-06-04 11:05:00 (ywatanabe)&quot;</span>
+<span class="c1"># File: ./src/scitex/str/_factor_out_digits.py</span>
+
+<span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">Functionality:</span>
+<span class="sd">    Factor out common powers of 10 from numerical data for cleaner axis labels</span>
+<span class="sd">Input:</span>
+<span class="sd">    Numerical data (list, array, or individual numbers)</span>
+<span class="sd">Output:</span>
+<span class="sd">    Factored values and the common factor for display</span>
+<span class="sd">Prerequisites:</span>
+<span class="sd">    numpy</span>
+<span class="sd">&quot;&quot;&quot;</span>
+
+<span class="kn">from</span><span class="w"> </span><span class="nn">typing</span><span class="w"> </span><span class="kn">import</span> <span class="n">List</span><span class="p">,</span> <span class="n">Optional</span><span class="p">,</span> <span class="n">Tuple</span><span class="p">,</span> <span class="n">Union</span>
+
+<span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
+
+
+<div class="viewcode-block" id="factor_out_digits">
+<a class="viewcode-back" href="../../api/scitex_str.html#scitex_str.factor_out_digits">[docs]</a>
+<span class="k">def</span><span class="w"> </span><span class="nf">factor_out_digits</span><span class="p">(</span>
+    <span class="n">values</span><span class="p">:</span> <span class="n">Union</span><span class="p">[</span><span class="n">List</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">,</span> <span class="nb">float</span><span class="p">,</span> <span class="nb">int</span><span class="p">],</span>
+    <span class="n">precision</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="mi">2</span><span class="p">,</span>
+    <span class="n">min_factor_power</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="mi">3</span><span class="p">,</span>
+    <span class="n">return_latex</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">True</span><span class="p">,</span>
+    <span class="n">return_unicode</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span>
+<span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Tuple</span><span class="p">[</span><span class="n">Union</span><span class="p">[</span><span class="n">List</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">,</span> <span class="nb">float</span><span class="p">],</span> <span class="nb">str</span><span class="p">]:</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Factor out common powers of 10 from numerical values for cleaner scientific notation.</span>
+
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------</span>
+<span class="sd">    values : Union[List, np.ndarray, float, int]</span>
+<span class="sd">        Numerical values to factor</span>
+<span class="sd">    precision : int, optional</span>
+<span class="sd">        Number of decimal places in factored values, by default 2</span>
+<span class="sd">    min_factor_power : int, optional</span>
+<span class="sd">        Minimum power of 10 to factor out, by default 3</span>
+<span class="sd">    return_latex : bool, optional</span>
+<span class="sd">        Return factor string in LaTeX format, by default True</span>
+<span class="sd">    return_unicode : bool, optional</span>
+<span class="sd">        Return factor string with Unicode superscripts, by default False</span>
+
+<span class="sd">    Returns</span>
+<span class="sd">    -------</span>
+<span class="sd">    Tuple[Union[List, np.ndarray, float], str]</span>
+<span class="sd">        Tuple of (factored_values, factor_string)</span>
+
+<span class="sd">    Examples</span>
+<span class="sd">    --------</span>
+<span class="sd">    &gt;&gt;&gt; factor_out_digits([1000, 2000, 3000])</span>
+<span class="sd">    ([1.0, 2.0, 3.0], &#39;$\\times 10^{3}$&#39;)</span>
+
+<span class="sd">    &gt;&gt;&gt; factor_out_digits([0.001, 0.002, 0.003])</span>
+<span class="sd">    ([1.0, 2.0, 3.0], &#39;$\\times 10^{-3}$&#39;)</span>
+
+<span class="sd">    &gt;&gt;&gt; factor_out_digits([1.5e6, 2.3e6, 4.1e6])</span>
+<span class="sd">    ([1.5, 2.3, 4.1], &#39;$\\times 10^{6}$&#39;)</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="c1"># Convert to numpy array for easier processing</span>
+    <span class="k">if</span> <span class="n">np</span><span class="o">.</span><span class="n">isscalar</span><span class="p">(</span><span class="n">values</span><span class="p">):</span>
+        <span class="n">values_array</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="n">values</span><span class="p">])</span>
+        <span class="n">is_scalar</span> <span class="o">=</span> <span class="kc">True</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="n">values_array</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">values</span><span class="p">)</span>
+        <span class="n">is_scalar</span> <span class="o">=</span> <span class="kc">False</span>
+
+    <span class="c1"># Remove zeros and handle special cases</span>
+    <span class="n">non_zero_values</span> <span class="o">=</span> <span class="n">values_array</span><span class="p">[</span><span class="n">values_array</span> <span class="o">!=</span> <span class="mi">0</span><span class="p">]</span>
+    <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">non_zero_values</span><span class="p">)</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
+        <span class="k">return</span> <span class="n">values</span><span class="p">,</span> <span class="s2">&quot;&quot;</span>
+
+    <span class="c1"># Find the common order of magnitude</span>
+    <span class="n">log_values</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">log10</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">abs</span><span class="p">(</span><span class="n">non_zero_values</span><span class="p">))</span>
+    <span class="n">common_power</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">floor</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">log_values</span><span class="p">)))</span>
+
+    <span class="c1"># Only factor out if the power is significant enough</span>
+    <span class="k">if</span> <span class="nb">abs</span><span class="p">(</span><span class="n">common_power</span><span class="p">)</span> <span class="o">&lt;</span> <span class="n">min_factor_power</span><span class="p">:</span>
+        <span class="k">return</span> <span class="n">values</span><span class="p">,</span> <span class="s2">&quot;&quot;</span>
+
+    <span class="c1"># Calculate factored values</span>
+    <span class="n">factor</span> <span class="o">=</span> <span class="mi">10</span><span class="o">**</span><span class="n">common_power</span>
+    <span class="n">factored_values</span> <span class="o">=</span> <span class="n">values_array</span> <span class="o">/</span> <span class="n">factor</span>
+
+    <span class="c1"># Round to specified precision</span>
+    <span class="n">factored_values</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">round</span><span class="p">(</span><span class="n">factored_values</span><span class="p">,</span> <span class="n">precision</span><span class="p">)</span>
+
+    <span class="c1"># Generate factor string</span>
+    <span class="n">factor_string</span> <span class="o">=</span> <span class="n">_format_factor_string</span><span class="p">(</span><span class="n">common_power</span><span class="p">,</span> <span class="n">return_latex</span><span class="p">,</span> <span class="n">return_unicode</span><span class="p">)</span>
+
+    <span class="c1"># Return in original format</span>
+    <span class="k">if</span> <span class="n">is_scalar</span><span class="p">:</span>
+        <span class="k">return</span> <span class="nb">float</span><span class="p">(</span><span class="n">factored_values</span><span class="p">[</span><span class="mi">0</span><span class="p">]),</span> <span class="n">factor_string</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">values</span><span class="p">,</span> <span class="nb">list</span><span class="p">):</span>
+            <span class="k">return</span> <span class="n">factored_values</span><span class="o">.</span><span class="n">tolist</span><span class="p">(),</span> <span class="n">factor_string</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="k">return</span> <span class="n">factored_values</span><span class="p">,</span> <span class="n">factor_string</span></div>
+
+
+
+<div class="viewcode-block" id="auto_factor_axis">
+<a class="viewcode-back" href="../../api/scitex_str.html#scitex_str.auto_factor_axis">[docs]</a>
+<span class="k">def</span><span class="w"> </span><span class="nf">auto_factor_axis</span><span class="p">(</span>
+    <span class="n">ax</span><span class="p">,</span>
+    <span class="n">axis</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="s2">&quot;both&quot;</span><span class="p">,</span>
+    <span class="n">precision</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="mi">2</span><span class="p">,</span>
+    <span class="n">min_factor_power</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="mi">3</span><span class="p">,</span>
+    <span class="n">return_latex</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">True</span><span class="p">,</span>
+    <span class="n">return_unicode</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span>
+    <span class="n">label_offset</span><span class="p">:</span> <span class="n">Tuple</span><span class="p">[</span><span class="nb">float</span><span class="p">,</span> <span class="nb">float</span><span class="p">]</span> <span class="o">=</span> <span class="p">(</span><span class="mf">0.02</span><span class="p">,</span> <span class="mf">0.98</span><span class="p">),</span>
+<span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Automatically factor out common powers of 10 from axis tick labels.</span>
+
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------</span>
+<span class="sd">    ax : matplotlib.axes.Axes</span>
+<span class="sd">        The axes object to modify</span>
+<span class="sd">    axis : str, optional</span>
+<span class="sd">        Which axis to factor (&#39;x&#39;, &#39;y&#39;, or &#39;both&#39;), by default &#39;both&#39;</span>
+<span class="sd">    precision : int, optional</span>
+<span class="sd">        Number of decimal places in factored values, by default 2</span>
+<span class="sd">    min_factor_power : int, optional</span>
+<span class="sd">        Minimum power of 10 to factor out, by default 3</span>
+<span class="sd">    return_latex : bool, optional</span>
+<span class="sd">        Use LaTeX format for factor string, by default True</span>
+<span class="sd">    return_unicode : bool, optional</span>
+<span class="sd">        Use Unicode superscripts for factor string, by default False</span>
+<span class="sd">    label_offset : Tuple[float, float], optional</span>
+<span class="sd">        Position for factor label as (x, y) in axes coordinates, by default (0.02, 0.98)</span>
+
+<span class="sd">    Examples</span>
+<span class="sd">    --------</span>
+<span class="sd">    &gt;&gt;&gt; import matplotlib.pyplot as plt</span>
+<span class="sd">    &gt;&gt;&gt; fig, ax = plt.subplots()</span>
+<span class="sd">    &gt;&gt;&gt; ax.plot([1000, 2000, 3000], [0.001, 0.002, 0.003])</span>
+<span class="sd">    &gt;&gt;&gt; auto_factor_axis(ax, axis=&#39;both&#39;)</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">if</span> <span class="n">axis</span> <span class="ow">in</span> <span class="p">[</span><span class="s2">&quot;x&quot;</span><span class="p">,</span> <span class="s2">&quot;both&quot;</span><span class="p">]:</span>
+        <span class="n">_factor_single_axis</span><span class="p">(</span>
+            <span class="n">ax</span><span class="p">,</span>
+            <span class="s2">&quot;x&quot;</span><span class="p">,</span>
+            <span class="n">precision</span><span class="p">,</span>
+            <span class="n">min_factor_power</span><span class="p">,</span>
+            <span class="n">return_latex</span><span class="p">,</span>
+            <span class="n">return_unicode</span><span class="p">,</span>
+            <span class="n">label_offset</span><span class="p">,</span>
+        <span class="p">)</span>
+
+    <span class="k">if</span> <span class="n">axis</span> <span class="ow">in</span> <span class="p">[</span><span class="s2">&quot;y&quot;</span><span class="p">,</span> <span class="s2">&quot;both&quot;</span><span class="p">]:</span>
+        <span class="n">_factor_single_axis</span><span class="p">(</span>
+            <span class="n">ax</span><span class="p">,</span>
+            <span class="s2">&quot;y&quot;</span><span class="p">,</span>
+            <span class="n">precision</span><span class="p">,</span>
+            <span class="n">min_factor_power</span><span class="p">,</span>
+            <span class="n">return_latex</span><span class="p">,</span>
+            <span class="n">return_unicode</span><span class="p">,</span>
+            <span class="n">label_offset</span><span class="p">,</span>
+        <span class="p">)</span></div>
+
+
+
+<span class="k">def</span><span class="w"> </span><span class="nf">_factor_single_axis</span><span class="p">(</span>
+    <span class="n">ax</span><span class="p">,</span>
+    <span class="n">axis_name</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span>
+    <span class="n">precision</span><span class="p">:</span> <span class="nb">int</span><span class="p">,</span>
+    <span class="n">min_factor_power</span><span class="p">:</span> <span class="nb">int</span><span class="p">,</span>
+    <span class="n">return_latex</span><span class="p">:</span> <span class="nb">bool</span><span class="p">,</span>
+    <span class="n">return_unicode</span><span class="p">:</span> <span class="nb">bool</span><span class="p">,</span>
+    <span class="n">label_offset</span><span class="p">:</span> <span class="n">Tuple</span><span class="p">[</span><span class="nb">float</span><span class="p">,</span> <span class="nb">float</span><span class="p">],</span>
+<span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Factor out digits from a single axis.&quot;&quot;&quot;</span>
+    <span class="c1"># Get current tick values</span>
+    <span class="k">if</span> <span class="n">axis_name</span> <span class="o">==</span> <span class="s2">&quot;x&quot;</span><span class="p">:</span>
+        <span class="n">tick_values</span> <span class="o">=</span> <span class="n">ax</span><span class="o">.</span><span class="n">get_xticks</span><span class="p">()</span>
+        <span class="n">set_ticks</span> <span class="o">=</span> <span class="n">ax</span><span class="o">.</span><span class="n">set_xticks</span>
+        <span class="n">set_ticklabels</span> <span class="o">=</span> <span class="n">ax</span><span class="o">.</span><span class="n">set_xticklabels</span>
+        <span class="n">label_x</span><span class="p">,</span> <span class="n">label_y</span> <span class="o">=</span> <span class="n">label_offset</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="mf">0.02</span>
+    <span class="k">else</span><span class="p">:</span>  <span class="c1"># y-axis</span>
+        <span class="n">tick_values</span> <span class="o">=</span> <span class="n">ax</span><span class="o">.</span><span class="n">get_yticks</span><span class="p">()</span>
+        <span class="n">set_ticks</span> <span class="o">=</span> <span class="n">ax</span><span class="o">.</span><span class="n">set_yticks</span>
+        <span class="n">set_ticklabels</span> <span class="o">=</span> <span class="n">ax</span><span class="o">.</span><span class="n">set_yticklabels</span>
+        <span class="n">label_x</span><span class="p">,</span> <span class="n">label_y</span> <span class="o">=</span> <span class="mf">0.02</span><span class="p">,</span> <span class="n">label_offset</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span>
+
+    <span class="c1"># Factor out common digits</span>
+    <span class="n">factored_ticks</span><span class="p">,</span> <span class="n">factor_string</span> <span class="o">=</span> <span class="n">factor_out_digits</span><span class="p">(</span>
+        <span class="n">tick_values</span><span class="p">,</span> <span class="n">precision</span><span class="p">,</span> <span class="n">min_factor_power</span><span class="p">,</span> <span class="n">return_latex</span><span class="p">,</span> <span class="n">return_unicode</span>
+    <span class="p">)</span>
+
+    <span class="c1"># Apply factored labels if factor was found</span>
+    <span class="k">if</span> <span class="n">factor_string</span><span class="p">:</span>
+        <span class="n">set_ticks</span><span class="p">(</span><span class="n">tick_values</span><span class="p">)</span>
+        <span class="n">set_ticklabels</span><span class="p">([</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">val</span><span class="si">:</span><span class="s2">.</span><span class="si">{</span><span class="n">precision</span><span class="si">}</span><span class="s2">f</span><span class="si">}</span><span class="s2">&quot;</span> <span class="k">for</span> <span class="n">val</span> <span class="ow">in</span> <span class="n">factored_ticks</span><span class="p">])</span>
+
+        <span class="c1"># Add factor label</span>
+        <span class="n">ax</span><span class="o">.</span><span class="n">text</span><span class="p">(</span>
+            <span class="n">label_x</span><span class="p">,</span>
+            <span class="n">label_y</span><span class="p">,</span>
+            <span class="n">factor_string</span><span class="p">,</span>
+            <span class="n">transform</span><span class="o">=</span><span class="n">ax</span><span class="o">.</span><span class="n">transAxes</span><span class="p">,</span>
+            <span class="n">fontsize</span><span class="o">=</span><span class="s2">&quot;small&quot;</span><span class="p">,</span>
+            <span class="n">bbox</span><span class="o">=</span><span class="nb">dict</span><span class="p">(</span><span class="n">boxstyle</span><span class="o">=</span><span class="s2">&quot;round,pad=0.3&quot;</span><span class="p">,</span> <span class="n">facecolor</span><span class="o">=</span><span class="s2">&quot;white&quot;</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.8</span><span class="p">),</span>
+        <span class="p">)</span>
+
+
+<span class="k">def</span><span class="w"> </span><span class="nf">_format_factor_string</span><span class="p">(</span>
+    <span class="n">power</span><span class="p">:</span> <span class="nb">int</span><span class="p">,</span> <span class="n">latex</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">True</span><span class="p">,</span> <span class="n">unicode_sup</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>
+<span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Format the factor string for display.</span>
+
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------</span>
+<span class="sd">    power : int</span>
+<span class="sd">        The power of 10</span>
+<span class="sd">    latex : bool, optional</span>
+<span class="sd">        Use LaTeX formatting, by default True</span>
+<span class="sd">    unicode_sup : bool, optional</span>
+<span class="sd">        Use Unicode superscripts, by default False</span>
+
+<span class="sd">    Returns</span>
+<span class="sd">    -------</span>
+<span class="sd">    str</span>
+<span class="sd">        Formatted factor string</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">if</span> <span class="n">latex</span><span class="p">:</span>
+        <span class="k">return</span> <span class="sa">f</span><span class="s2">&quot;$</span><span class="se">\\</span><span class="s2">times 10^</span><span class="se">{{</span><span class="si">{</span><span class="n">power</span><span class="si">}</span><span class="se">}}</span><span class="s2">$&quot;</span>
+    <span class="k">elif</span> <span class="n">unicode_sup</span><span class="p">:</span>
+        <span class="c1"># Unicode superscript mapping</span>
+        <span class="n">superscripts</span> <span class="o">=</span> <span class="p">{</span>
+            <span class="s2">&quot;0&quot;</span><span class="p">:</span> <span class="s2">&quot;⁰&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;1&quot;</span><span class="p">:</span> <span class="s2">&quot;¹&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;2&quot;</span><span class="p">:</span> <span class="s2">&quot;²&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;3&quot;</span><span class="p">:</span> <span class="s2">&quot;³&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;4&quot;</span><span class="p">:</span> <span class="s2">&quot;⁴&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;5&quot;</span><span class="p">:</span> <span class="s2">&quot;⁵&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;6&quot;</span><span class="p">:</span> <span class="s2">&quot;⁶&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;7&quot;</span><span class="p">:</span> <span class="s2">&quot;⁷&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;8&quot;</span><span class="p">:</span> <span class="s2">&quot;⁸&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;9&quot;</span><span class="p">:</span> <span class="s2">&quot;⁹&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;-&quot;</span><span class="p">:</span> <span class="s2">&quot;⁻&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;+&quot;</span><span class="p">:</span> <span class="s2">&quot;⁺&quot;</span><span class="p">,</span>
+        <span class="p">}</span>
+        <span class="n">power_str</span> <span class="o">=</span> <span class="nb">str</span><span class="p">(</span><span class="n">power</span><span class="p">)</span>
+        <span class="n">unicode_power</span> <span class="o">=</span> <span class="s2">&quot;&quot;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">superscripts</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">char</span><span class="p">,</span> <span class="n">char</span><span class="p">)</span> <span class="k">for</span> <span class="n">char</span> <span class="ow">in</span> <span class="n">power_str</span><span class="p">)</span>
+        <span class="k">return</span> <span class="sa">f</span><span class="s2">&quot;×10</span><span class="si">{</span><span class="n">unicode_power</span><span class="si">}</span><span class="s2">&quot;</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="k">return</span> <span class="sa">f</span><span class="s2">&quot;×10^</span><span class="si">{</span><span class="n">power</span><span class="si">}</span><span class="s2">&quot;</span>
+
+
+<div class="viewcode-block" id="smart_tick_formatter">
+<a class="viewcode-back" href="../../api/scitex_str.html#scitex_str.smart_tick_formatter">[docs]</a>
+<span class="k">def</span><span class="w"> </span><span class="nf">smart_tick_formatter</span><span class="p">(</span>
+    <span class="n">values</span><span class="p">:</span> <span class="n">Union</span><span class="p">[</span><span class="n">List</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">],</span>
+    <span class="n">max_ticks</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="mi">6</span><span class="p">,</span>
+    <span class="n">factor_out</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">True</span><span class="p">,</span>
+    <span class="n">precision</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="mi">2</span><span class="p">,</span>
+    <span class="n">min_factor_power</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="mi">3</span><span class="p">,</span>
+    <span class="n">return_latex</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">True</span><span class="p">,</span>
+<span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Tuple</span><span class="p">[</span><span class="n">Union</span><span class="p">[</span><span class="n">List</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">],</span> <span class="n">List</span><span class="p">[</span><span class="nb">str</span><span class="p">],</span> <span class="nb">str</span><span class="p">]:</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Smart tick formatter that combines nice tick selection with factor-out-digits.</span>
+
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------</span>
+<span class="sd">    values : Union[List, np.ndarray]</span>
+<span class="sd">        Data values to create ticks for</span>
+<span class="sd">    max_ticks : int, optional</span>
+<span class="sd">        Maximum number of ticks, by default 6</span>
+<span class="sd">    factor_out : bool, optional</span>
+<span class="sd">        Whether to factor out common powers of 10, by default True</span>
+<span class="sd">    precision : int, optional</span>
+<span class="sd">        Number of decimal places, by default 2</span>
+<span class="sd">    min_factor_power : int, optional</span>
+<span class="sd">        Minimum power to factor out, by default 3</span>
+<span class="sd">    return_latex : bool, optional</span>
+<span class="sd">        Use LaTeX format, by default True</span>
+
+<span class="sd">    Returns</span>
+<span class="sd">    -------</span>
+<span class="sd">    Tuple[Union[List, np.ndarray], List[str], str]</span>
+<span class="sd">        (tick_positions, tick_labels, factor_string)</span>
+
+<span class="sd">    Examples</span>
+<span class="sd">    --------</span>
+<span class="sd">    &gt;&gt;&gt; smart_tick_formatter([1000, 1500, 2000, 2500, 3000])</span>
+<span class="sd">    ([1000, 1500, 2000, 2500, 3000], [&#39;1.0&#39;, &#39;1.5&#39;, &#39;2.0&#39;, &#39;2.5&#39;, &#39;3.0&#39;], &#39;$\\times 10^{3}$&#39;)</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">values_array</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">values</span><span class="p">)</span>
+
+    <span class="c1"># Create nice tick positions</span>
+    <span class="kn">from</span><span class="w"> </span><span class="nn">matplotlib.ticker</span><span class="w"> </span><span class="kn">import</span> <span class="n">MaxNLocator</span>
+
+    <span class="n">locator</span> <span class="o">=</span> <span class="n">MaxNLocator</span><span class="p">(</span><span class="n">nbins</span><span class="o">=</span><span class="n">max_ticks</span><span class="p">,</span> <span class="n">prune</span><span class="o">=</span><span class="s2">&quot;both&quot;</span><span class="p">)</span>
+    <span class="n">tick_positions</span> <span class="o">=</span> <span class="n">locator</span><span class="o">.</span><span class="n">tick_values</span><span class="p">(</span><span class="n">values_array</span><span class="o">.</span><span class="n">min</span><span class="p">(),</span> <span class="n">values_array</span><span class="o">.</span><span class="n">max</span><span class="p">())</span>
+
+    <span class="c1"># Factor out common digits if requested</span>
+    <span class="k">if</span> <span class="n">factor_out</span><span class="p">:</span>
+        <span class="n">factored_ticks</span><span class="p">,</span> <span class="n">factor_string</span> <span class="o">=</span> <span class="n">factor_out_digits</span><span class="p">(</span>
+            <span class="n">tick_positions</span><span class="p">,</span> <span class="n">precision</span><span class="p">,</span> <span class="n">min_factor_power</span><span class="p">,</span> <span class="n">return_latex</span>
+        <span class="p">)</span>
+        <span class="n">tick_labels</span> <span class="o">=</span> <span class="p">[</span>
+            <span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">val</span><span class="si">:</span><span class="s2">.</span><span class="si">{</span><span class="n">precision</span><span class="si">}</span><span class="s2">f</span><span class="si">}</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">rstrip</span><span class="p">(</span><span class="s2">&quot;0&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">rstrip</span><span class="p">(</span><span class="s2">&quot;.&quot;</span><span class="p">)</span> <span class="k">for</span> <span class="n">val</span> <span class="ow">in</span> <span class="n">factored_ticks</span>
+        <span class="p">]</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="n">tick_labels</span> <span class="o">=</span> <span class="p">[</span>
+            <span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">val</span><span class="si">:</span><span class="s2">.</span><span class="si">{</span><span class="n">precision</span><span class="si">}</span><span class="s2">f</span><span class="si">}</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">rstrip</span><span class="p">(</span><span class="s2">&quot;0&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">rstrip</span><span class="p">(</span><span class="s2">&quot;.&quot;</span><span class="p">)</span> <span class="k">for</span> <span class="n">val</span> <span class="ow">in</span> <span class="n">tick_positions</span>
+        <span class="p">]</span>
+        <span class="n">factor_string</span> <span class="o">=</span> <span class="s2">&quot;&quot;</span>
+
+    <span class="k">return</span> <span class="n">tick_positions</span><span class="p">,</span> <span class="n">tick_labels</span><span class="p">,</span> <span class="n">factor_string</span></div>
+
+
+
+<span class="c1"># EOF</span>
+</pre></div>
+
+           </div>
+          </div>
+          <footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2024-2026, Yusuke Watanabe.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

@@ -39,8 +39,6 @@ Requires Python >= 3.10.
 pip install scitex-str
 ```
 
-> **SciTeX users**: `pip install scitex` already includes this. Use `import scitex` then `scitex.str`.
-
 ## Quick Start
 
 ```python
@@ -96,7 +94,9 @@ ss.decapitalize("Hello")
 
 ## Part of SciTeX
 
-`scitex-str` is part of [**SciTeX**](https://scitex.ai).
+`scitex-str` is part of [**SciTeX**](https://scitex.ai). Install via
+the umbrella with `pip install scitex[str]` to use as
+`scitex.str` (Python).
 
 >Four Freedoms for Research
 >

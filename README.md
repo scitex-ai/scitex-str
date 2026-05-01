@@ -96,7 +96,7 @@ ss.decapitalize("Hello")
 
 `scitex-str` is part of [**SciTeX**](https://scitex.ai). Install via
 the umbrella with `pip install scitex[str]` to use as
-`scitex.str` (Python).
+`scitex.str` (Python) or `scitex str ...` (CLI).
 
 >Four Freedoms for Research
 >

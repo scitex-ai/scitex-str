@@ -52,7 +52,7 @@ ss.readable_bytes(1_500_000)      # "1.43 MB"
 
 ## 1 Interfaces
 
-<details>
+<details open>
 <summary><strong>Python API</strong></summary>
 
 <br>

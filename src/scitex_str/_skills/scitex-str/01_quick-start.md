@@ -1,7 +1,8 @@
 ---
-name: quick-start
-description: scitex-str — Quick Start — see file body for details.
-tags: [scitex-str, scitex-package]
+description: |
+  [TOPIC] Quick Start
+  [DETAILS] Install, import, and a few representative recipes (colored print, LaTeX render, label formatting).
+tags: [scitex-str-quick-start]
 ---
 
 <!-- 01_quick-start.md -->

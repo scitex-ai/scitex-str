@@ -44,7 +44,7 @@ from typing import Any, Callable, Dict
 # scitex.logging imports _Tee which imports scitex.str which imports this file
 def _get_logger():
     """Get logger lazily to avoid circular import."""
-    from scitex import logging
+    import scitex_logging as logging
 
     return logging.getLogger(__name__)
 

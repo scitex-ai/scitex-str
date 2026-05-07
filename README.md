@@ -41,16 +41,31 @@ Requires Python >= 3.10.
 pip install scitex-str
 ```
 
-## Quick Start
+## Architecture
 
-```python
-import scitex_str as ss
-
-ss.to_latex_style("theta")        # r"$\theta$"
-ss.printc("Success!", color="green")
-ss.parse("./data/Patient_23/Hour_12", "./data/Patient_{id}/Hour_{hour}")
-ss.readable_bytes(1_500_000)      # "1.43 MB"
 ```
+scitex_str/
+├── _to_latex_style.py / _safe_to_latex_style.py   # LaTeX rendering with fallback
+├── _color_text.py / _printc.py                     # ANSI color helpers
+├── _parse.py / _grep.py / _search.py / _replace.py # text search & template parse
+├── _format_plot_text.py                            # axis-label formatter
+├── _readable_bytes.py / _factor_out_digits.py      # numeric formatting
+├── _mask_api.py / _remove_ansi.py                  # sanitization
+├── _squeeze_space.py / _title.py / _decapitalize.py# small string ops
+└── ...                                              # ~20 boring helpers, one per file
+```
+
+```mermaid
+flowchart LR
+    LX[LaTeX/mathtext<br/>fallback] --> A[to_latex_style<br/>safe_latex_render]
+    ANSI[ANSI tooling] --> B[printc / ct / remove_ansi]
+    Tmpl[Template parsing] --> C[parse / grep / search / replace]
+    Fmt[Numeric formatting] --> D[readable_bytes<br/>factor_out_digits]
+    Plot[Plot text] --> E[format_plot_text]
+    Sanit[Sanitization] --> F[mask_api_key]
+```
+
+<p align="center"><sub><b>Figure 1.</b> Module layout. Each helper is a single-file leaf — boring on purpose, consistent across 33 ecosystem packages.</sub></p>
 
 ## 1 Interfaces
 
@@ -93,6 +108,47 @@ ss.decapitalize("Hello")
 ```
 
 </details>
+
+## Demo
+
+```python
+import scitex_str as ss
+
+# 1) LaTeX-safe label rendering — no crash if TeX missing
+label = ss.safe_to_latex_style("theta")    # "$\\theta$" or unicode fallback
+
+# 2) Colored terminal status
+ss.printc("[ok] tunnel established", color="green")
+ss.printc("[warn] retry in 3s",      color="yellow")
+
+# 3) Parse a structured directory
+ss.parse("./data/Patient_23/Hour_12",
+         "./data/Patient_{id}/Hour_{hour}")  # → {'id': 23, 'hour': 12}
+
+# 4) Human-readable byte size
+ss.readable_bytes(1_500_000)               # → "1.43 MB"
+
+# 5) Mask credentials before logging
+ss.mask_api_key("sk-abcdef1234567890")     # → "sk-***7890"
+```
+
+```mermaid
+flowchart LR
+    A[Raw value] --> B{kind?}
+    B -- bytes --> RB[readable_bytes]
+    B -- path --> P[parse]
+    B -- math --> L[safe_to_latex_style]
+    B -- secret --> M[mask_api_key]
+    B -- log line --> PC[printc]
+    RB --> O[Pretty output]
+    P --> O
+    L --> O
+    M --> O
+    PC --> O
+    style O fill:#27ae60,stroke:#2c3e50,color:#fff
+```
+
+<p align="center"><sub><b>Figure 2.</b> Demo. Pick the helper by what you have, not by where it lives.</sub></p>
 
 ## Part of SciTeX
 

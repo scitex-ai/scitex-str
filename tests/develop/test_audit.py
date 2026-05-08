@@ -19,5 +19,5 @@ def test_audit_all_clean():
 
     audit_all_for_package(
         "scitex-str",
-        skip_rules=("PS108b",),  # 20 flat .py files — structural refactor pending
+        skip_rules=("PS-108b",),  # 20 flat .py files — structural refactor pending
     )

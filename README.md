@@ -9,7 +9,7 @@
 <p align="center"><b>Text processing utilities for scientific workflows.</b></p>
 
 <p align="center">
-  <a href="https://scitex-str.readthedocs.io/">Full Documentation</a> · <code>pip install scitex-str</code>
+  <a href="https://scitex-str.readthedocs.io/">Full Documentation</a> · <code>uv pip install scitex-str[all]</code>
 </p>
 
 <!-- scitex-badges:start -->

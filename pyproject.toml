@@ -80,6 +80,11 @@ testpaths = ["tests"]
 python_files = ["test_*.py"]
 addopts = "-v --tb=short --cov=scitex_str --cov-report=term-missing"
 
+[tool.coverage.run]
+parallel = true
+source = ["scitex_str"]
+concurrency = ["multiprocessing", "thread"]
+
 [tool.ruff]
 line-length = 88
 target-version = "py310"

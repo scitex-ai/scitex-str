@@ -8,6 +8,14 @@ from collections import abc
 
 import numpy as np
 from natsort import natsorted
+from scitex_dev import try_import_optional
+
+# Optional deps live in [project.optional-dependencies.all]. The package
+# imports cleanly without them; `search` just won't recognise the extra
+# array-like types as input. See
+# ~/.claude/skills/scitex/general/05_development_11_dependency-tiers.md
+_pd = try_import_optional("pandas", extra="all", pkg="scitex-str")
+_xr = try_import_optional("xarray", extra="all", pkg="scitex-str")
 
 
 def search(
@@ -84,24 +92,16 @@ def search(
         ['x', 'y']
         """
         # Optional heavy deps — accept them when installed, no-op otherwise.
-        try:
-            import pandas as pd
-        except ImportError:
-            pd = None
-        try:
-            import xarray as xr
-        except ImportError:
-            xr = None
-
+        # Sourced at module import via scitex_dev.try_import_optional.
         arraylike_types: list = [np.ndarray]
-        if pd is not None:
-            arraylike_types.append(pd.Series)
-        if xr is not None:
-            arraylike_types.append(xr.DataArray)
+        if _pd is not None:
+            arraylike_types.append(_pd.Series)
+        if _xr is not None:
+            arraylike_types.append(_xr.DataArray)
 
         list_like_types: list = [list, tuple]
-        if pd is not None:
-            list_like_types.append(pd.Index)
+        if _pd is not None:
+            list_like_types.append(_pd.Index)
 
         if isinstance(string_or_pattern, tuple(arraylike_types)):
             return string_or_pattern.tolist()

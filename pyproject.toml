@@ -36,28 +36,42 @@ classifiers = [
     "Topic :: Text Processing",
 ]
 dependencies = [
-    "scitex-dict>=0.1.0",
-    "natsort",
-    "numpy",
+    # Hard tier — every public surface (Python API + Skills) must start
+    # from `pip install scitex-str` alone. See
+    # ~/.claude/skills/scitex/general/05_development_11_dependency-tiers.md
+    "scitex-dev>=0.11.7",  # try_import_optional, skills/docs entry-points, ecosystem audits
+    "scitex-logging",      # lazy-imported logger in _latex_fallback (always hard per skill rule)
+    "scitex-dict>=0.1.0",  # DotDict — top-level import in _parse / _replace
+    "natsort",             # natsorted — top-level import in _search
+    "numpy",               # top-level import in _search / _factor_out_digits
 ]
 
 [project.optional-dependencies]
+# Tier 2 — `pip install scitex-str[all]` unlocks all graceful-degradation
+# paths (pandas/xarray-aware search inputs, matplotlib-backed LaTeX
+# rendering / tick formatting). Each dep is gated by try_import_optional
+# or function-scope import; the package still imports cleanly without them.
+all = [
+    "matplotlib",  # _latex_fallback.check_latex_capability, smart_tick_formatter
+    "pandas",      # _search: accept pd.Series / pd.Index as input
+    "xarray",      # _search: accept xr.DataArray as input
+]
+
+# Tier 3 — maintainer tools only. Not pulled in by [all]. Hard-tier deps
+# (numpy, scitex-dev, ...) are not duplicated here; `pip install -e ".[dev]"`
+# walks the default set automatically.
 dev = [
-    "scitex-dev>=0.11.7",
     "pytest>=7.0.0",
     "pytest-cov>=4.0.0",
     "pytest-xdist>=3.0.0",
     "pre-commit>=3.5.0",
-    "numpy",
-]
-docs = [
+    # Docs build (folded in from the now-removed [docs] fragmented extra)
     "sphinx>=7.0",
     "sphinx-rtd-theme>=2.0",
     "myst-parser>=2.0",
     "sphinx-copybutton>=0.5",
     "sphinx-autodoc-typehints>=1.25",
 ]
-all = []
 
 [project.entry-points."scitex_dev.docs"]
 scitex-str = "scitex_str"

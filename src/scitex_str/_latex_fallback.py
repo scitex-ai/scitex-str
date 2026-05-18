@@ -37,14 +37,20 @@ import functools
 import re
 from typing import Any, Callable, Dict
 
-# matplotlib imports moved to functions that need them
+from scitex_dev import try_import_optional
+
+# matplotlib imports moved to functions that need them. Optional `[all]`
+# dep — gated by scitex_dev.try_import_optional per the ecosystem rule
+# (general/05_development_11_dependency-tiers.md). Raw `try/except
+# ImportError` is forbidden; this helper registers the install hint
+# (`pip install scitex-str[all]`) automatically.
 
 
 # Delay logging import to avoid circular dependency
 # scitex.logging imports _Tee which imports scitex.str which imports this file
 def _get_logger():
     """Get logger lazily to avoid circular import."""
-    from scitex import logging
+    import scitex_logging as logging
 
     return logging.getLogger(__name__)
 
@@ -103,10 +109,13 @@ def check_latex_capability() -> bool:
     """
     global _latex_available
 
-    # Import matplotlib here when actually needed
-    try:
-        import matplotlib.pyplot as plt
-    except ImportError:
+    # Import matplotlib here when actually needed. Optional `[all]` dep —
+    # try_import_optional returns None on missing install (no raw
+    # try/except ImportError per ecosystem rule).
+    plt = try_import_optional(
+        "matplotlib.pyplot", extra="all", pkg="scitex-str"
+    )
+    if plt is None:
         _latex_available = False
         return False
 

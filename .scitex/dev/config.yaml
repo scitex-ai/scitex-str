@@ -1,0 +1,17 @@
+# scitex-dev project-type config
+# Drives which rule families the auditor applies.
+# See: scitex-dev ecosystem audit-project --help
+
+project-type:
+  - pip
+
+audit:
+  root-whitelist:
+    files:
+      # Codecov ALWAYS reads `codecov.yml` from repo root — non-negotiable
+      # location per codecov.io docs. Whitelist it from PS-103.
+      - codecov.yml
+
+# audit:
+#   skip:
+#     - PS-108

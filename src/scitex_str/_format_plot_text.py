@@ -17,22 +17,15 @@ Prerequisites:
 import re
 from typing import Optional, Tuple
 
-try:
-    from ._latex_fallback import latex_fallback_decorator, safe_latex_render
+# `_latex_fallback` is a sibling module that only depends on stdlib at
+# import time (matplotlib and scitex_logging are deferred to function
+# scope), so this import never fails on a default install. The previous
+# defensive try/except violated the ecosystem rule that raw
+# `try/except ImportError` must be replaced by try_import_optional — and
+# the guarded import was internal anyway, so the guard was dead code.
+from ._latex_fallback import latex_fallback_decorator, safe_latex_render
 
-    FALLBACK_AVAILABLE = True
-except ImportError:
-    FALLBACK_AVAILABLE = False
-
-    # Define dummy decorator if fallback not available
-    def latex_fallback_decorator(fallback_strategy="auto", preserve_math=True):
-        def decorator(func):
-            return func
-
-        return decorator
-
-    def safe_latex_render(text, fallback_strategy="auto", preserve_math=True):
-        return text
+FALLBACK_AVAILABLE = True
 
 
 @latex_fallback_decorator(fallback_strategy="auto", preserve_math=True)

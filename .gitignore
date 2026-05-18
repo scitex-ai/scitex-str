@@ -15,6 +15,9 @@ htmlcov/
 .venv/
 venv/
 docs/sphinx/_build/
-.scitex/
+.scitex/*
+!.scitex/dev/
+.scitex/dev/*
+!.scitex/dev/config.yaml
 .DS_Store
 *.swp

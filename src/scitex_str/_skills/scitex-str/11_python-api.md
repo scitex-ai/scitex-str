@@ -1,7 +1,8 @@
 ---
-name: python-api
-description: scitex-str — Python API — see file body for details.
-tags: [scitex-str, scitex-package]
+description: |
+  [TOPIC] Python API
+  [DETAILS] Grouped public API: console, LaTeX, LaTeX fallback, plot text, parsing/search, misc helpers.
+tags: [scitex-str-python-api]
 ---
 
 <!-- 02_python-api.md -->

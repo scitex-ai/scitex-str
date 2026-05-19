@@ -12,158 +12,266 @@ class TestCleanPath:
     """Tests for clean_path function."""
 
     def test_normalizes_double_slashes(self):
+        # Arrange
         from scitex_str import clean_path
 
-        assert clean_path("/home//user//file.txt") == "/home/user/file.txt"
+        path = "/home//user//file.txt"
+        # Act
+        result = clean_path(path)
+        # Assert
+        assert result == "/home/user/file.txt"
 
     def test_resolves_dot_segments(self):
+        # Arrange
         from scitex_str import clean_path
 
-        assert clean_path("/home/user/./folder/../file.txt") == "/home/user/file.txt"
+        path = "/home/user/./folder/../file.txt"
+        # Act
+        result = clean_path(path)
+        # Assert
+        assert result == "/home/user/file.txt"
 
     def test_preserves_trailing_slash_for_directories(self):
+        # Arrange
         from scitex_str import clean_path
 
-        result = clean_path("/home/user/dir/")
+        path = "/home/user/dir/"
+        # Act
+        result = clean_path(path)
+        # Assert
         assert result.endswith("/")
 
     def test_rejects_non_string_input(self):
+        # Arrange
         from scitex_str import clean_path
 
+        bad_input = 123
+        # Act
+        action = lambda: clean_path(bad_input)
+        # Assert
         with pytest.raises((TypeError, ValueError)):
-            clean_path(123)
+            action()
 
     def test_handles_pathlike_object(self):
+        # Arrange
         from pathlib import Path
 
         from scitex_str import clean_path
 
-        result = clean_path(Path("/home/user/file.txt"))
+        path_obj = Path("/home/user/file.txt")
+        # Act
+        result = clean_path(path_obj)
+        # Assert
         assert result == "/home/user/file.txt"
 
 
 class TestDecapitalize:
     """Tests for decapitalize function."""
 
-    def test_lowercase_first_char(self):
+    def test_lowercases_first_character_of_word(self):
+        # Arrange
         from scitex_str import decapitalize
 
-        assert decapitalize("Hello") == "hello"
+        word = "Hello"
+        # Act
+        result = decapitalize(word)
+        # Assert
+        assert result == "hello"
 
-    def test_preserves_rest_of_string(self):
+    def test_preserves_rest_of_string_unchanged(self):
+        # Arrange
         from scitex_str import decapitalize
 
-        assert decapitalize("WORLD") == "wORLD"
+        word = "WORLD"
+        # Act
+        result = decapitalize(word)
+        # Assert
+        assert result == "wORLD"
 
-    def test_empty_string_returns_empty(self):
+    def test_empty_string_returns_empty_string(self):
+        # Arrange
         from scitex_str import decapitalize
 
-        assert decapitalize("") == ""
+        word = ""
+        # Act
+        result = decapitalize(word)
+        # Assert
+        assert result == ""
 
-    def test_single_char(self):
+    def test_single_character_is_lowercased(self):
+        # Arrange
         from scitex_str import decapitalize
 
-        assert decapitalize("A") == "a"
+        word = "A"
+        # Act
+        result = decapitalize(word)
+        # Assert
+        assert result == "a"
 
-    def test_already_lowercase_unchanged(self):
+    def test_already_lowercase_string_unchanged(self):
+        # Arrange
         from scitex_str import decapitalize
 
-        assert decapitalize("hello") == "hello"
+        word = "hello"
+        # Act
+        result = decapitalize(word)
+        # Assert
+        assert result == "hello"
 
 
 class TestRemoveAnsi:
     """Tests for remove_ansi function."""
 
-    def test_strips_color_codes(self):
+    def test_strips_ansi_color_codes(self):
+        # Arrange
         from scitex_str import remove_ansi
 
         colored = "\033[91mHello\033[0m"
-        assert remove_ansi(colored) == "Hello"
+        # Act
+        result = remove_ansi(colored)
+        # Assert
+        assert result == "Hello"
 
-    def test_plain_text_unchanged(self):
+    def test_plain_text_passes_through_unchanged(self):
+        # Arrange
         from scitex_str import remove_ansi
 
-        assert remove_ansi("plain text") == "plain text"
+        plain = "plain text"
+        # Act
+        result = remove_ansi(plain)
+        # Assert
+        assert result == "plain text"
 
-    def test_multiple_codes_stripped(self):
+    def test_multiple_ansi_codes_all_stripped(self):
+        # Arrange
         from scitex_str import remove_ansi
 
         text = "\033[91mRed\033[0m and \033[92mGreen\033[0m"
-        assert remove_ansi(text) == "Red and Green"
+        # Act
+        result = remove_ansi(text)
+        # Assert
+        assert result == "Red and Green"
 
 
 class TestSqueezeSpaces:
     """Tests for squeeze_spaces function."""
 
-    def test_collapses_multiple_spaces(self):
+    def test_collapses_multiple_spaces_into_one(self):
+        # Arrange
         from scitex_str import squeeze_spaces
 
-        assert squeeze_spaces("Hello   world") == "Hello world"
+        text = "Hello   world"
+        # Act
+        result = squeeze_spaces(text)
+        # Assert
+        assert result == "Hello world"
 
-    def test_single_space_unchanged(self):
+    def test_single_space_passes_through_unchanged(self):
+        # Arrange
         from scitex_str import squeeze_spaces
 
-        assert squeeze_spaces("Hello world") == "Hello world"
+        text = "Hello world"
+        # Act
+        result = squeeze_spaces(text)
+        # Assert
+        assert result == "Hello world"
 
-    def test_custom_pattern_and_replacement(self):
+    def test_custom_pattern_and_replacement_collapses_dashes(self):
+        # Arrange
         from scitex_str import squeeze_spaces
 
-        assert squeeze_spaces("a---b--c-d", pattern="-+", repl="-") == "a-b-c-d"
+        text = "a---b--c-d"
+        # Act
+        result = squeeze_spaces(text, pattern="-+", repl="-")
+        # Assert
+        assert result == "a-b-c-d"
 
 
 class TestTitleCase:
     """Tests for title_case function."""
 
-    def test_basic_title_case(self):
+    def test_capitalizes_content_words_in_sentence(self):
+        # Arrange
         from scitex_str import title_case
 
-        result = title_case("welcome to the world")
+        sentence = "welcome to the world"
+        # Act
+        result = title_case(sentence)
+        # Assert
         assert result == "Welcome to the World"
 
-    def test_handles_mixed_case(self):
+    def test_handles_mixed_case_first_word_capitalized(self):
+        # Arrange
         from scitex_str import title_case
 
-        result = title_case("using cpus for tasks")
-        assert result[0] == "U"  # First word capitalized
+        sentence = "using cpus for tasks"
+        # Act
+        result = title_case(sentence)
+        # Assert
+        assert result[0] == "U"
 
-    def test_lowercase_prepositions(self):
+    def test_lowercase_prepositions_stay_lowercase(self):
+        # Arrange
         from scitex_str import title_case
 
-        result = title_case("the art of war and peace")
-        # "the", "of", "and" should stay lowercase
-        words = result.split()
-        assert words[1] == "Art"
-        assert words[2] == "of"
-        assert words[4] == "and"
+        sentence = "the art of war and peace"
+        # Act
+        words = title_case(sentence).split()
+        # Assert
+        assert words[1:5] == ["Art", "of", "War", "and"]
 
 
 class TestReadableBytes:
     """Tests for readable_bytes function."""
 
-    def test_bytes(self):
+    def test_formats_bytes_unit(self):
+        # Arrange
         from scitex_str import readable_bytes
 
-        assert readable_bytes(100) == "100.0 B"
+        n = 100
+        # Act
+        result = readable_bytes(n)
+        # Assert
+        assert result == "100.0 B"
 
-    def test_kibibytes(self):
+    def test_formats_kibibytes_unit(self):
+        # Arrange
         from scitex_str import readable_bytes
 
-        assert readable_bytes(1024) == "1.0 KiB"
+        n = 1_024
+        # Act
+        result = readable_bytes(n)
+        # Assert
+        assert result == "1.0 KiB"
 
-    def test_mebibytes(self):
+    def test_formats_mebibytes_unit(self):
+        # Arrange
         from scitex_str import readable_bytes
 
-        assert readable_bytes(1048576) == "1.0 MiB"
+        n = 1_048_576
+        # Act
+        result = readable_bytes(n)
+        # Assert
+        assert result == "1.0 MiB"
 
-    def test_gibibytes(self):
+    def test_formats_gibibytes_unit(self):
+        # Arrange
         from scitex_str import readable_bytes
 
-        assert readable_bytes(1073741824) == "1.0 GiB"
+        n = 1_073_741_824
+        # Act
+        result = readable_bytes(n)
+        # Assert
+        assert result == "1.0 GiB"
 
-    def test_custom_suffix(self):
+    def test_custom_suffix_appears_in_output(self):
+        # Arrange
         from scitex_str import readable_bytes
 
-        result = readable_bytes(1024, suffix="b")
+        n = 1_024
+        # Act
+        result = readable_bytes(n, suffix="b")
+        # Assert
         assert "Kib" in result
 
 
@@ -173,24 +281,54 @@ class TestReadableBytes:
 class TestGrep:
     """Tests for grep function."""
 
-    def test_basic_match(self):
+    def test_basic_substring_match_returns_matched_strings(self):
+        # Arrange
         from scitex_str import grep
 
-        indices, matched = grep(["apple", "banana", "cherry"], "an")
+        strings = ["apple", "banana", "cherry"]
+        # Act
+        indices, matched = grep(strings, "an")
+        # Assert
         assert matched == ["banana"]
+
+    def test_basic_substring_match_returns_matched_indices(self):
+        # Arrange
+        from scitex_str import grep
+
+        strings = ["apple", "banana", "cherry"]
+        # Act
+        indices, matched = grep(strings, "an")
+        # Assert
         assert indices == [1]
 
-    def test_regex_pattern(self):
+    def test_regex_anchor_pattern_matches_prefixes(self):
+        # Arrange
         from scitex_str import grep
 
-        indices, matched = grep(["cat", "car", "dog"], "^ca")
+        strings = ["cat", "car", "dog"]
+        # Act
+        indices, matched = grep(strings, "^ca")
+        # Assert
         assert set(matched) == {"cat", "car"}
 
-    def test_no_matches_returns_empty(self):
+    def test_no_matches_returns_empty_matched_list(self):
+        # Arrange
         from scitex_str import grep
 
-        indices, matched = grep(["apple", "banana"], "xyz")
+        strings = ["apple", "banana"]
+        # Act
+        indices, matched = grep(strings, "xyz")
+        # Assert
         assert matched == []
+
+    def test_no_matches_returns_empty_indices_list(self):
+        # Arrange
+        from scitex_str import grep
+
+        strings = ["apple", "banana"]
+        # Act
+        indices, matched = grep(strings, "xyz")
+        # Assert
         assert indices == []
 
 
@@ -202,41 +340,88 @@ class TestSearch:
         pytest.importorskip("numpy")
         pytest.importorskip("natsort")
 
-    def test_single_pattern_multiple_strings(self):
+    def test_single_pattern_matches_exact_string(self):
+        # Arrange
         from scitex_str import search
 
-        indices, matched = search("orange", ["apple", "orange", "orange_juice"])
+        strings = ["apple", "orange", "orange_juice"]
+        # Act
+        indices, matched = search("orange", strings)
+        # Assert
         assert "orange" in matched
+
+    def test_single_pattern_matches_prefix_string(self):
+        # Arrange
+        from scitex_str import search
+
+        strings = ["apple", "orange", "orange_juice"]
+        # Act
+        indices, matched = search("orange", strings)
+        # Assert
         assert "orange_juice" in matched
 
-    def test_multiple_patterns(self):
+    def test_multiple_patterns_match_first_pattern(self):
+        # Arrange
         from scitex_str import search
 
-        indices, matched = search(
-            ["orange", "banana"],
-            ["apple", "orange", "banana", "orange_juice"],
-        )
+        strings = ["apple", "orange", "banana", "orange_juice"]
+        # Act
+        indices, matched = search(["orange", "banana"], strings)
+        # Assert
         assert "orange" in matched
+
+    def test_multiple_patterns_match_second_pattern(self):
+        # Arrange
+        from scitex_str import search
+
+        strings = ["apple", "orange", "banana", "orange_juice"]
+        # Act
+        indices, matched = search(["orange", "banana"], strings)
+        # Assert
         assert "banana" in matched
 
-    def test_perfect_match_mode(self):
+    def test_perfect_match_mode_excludes_substring_matches(self):
+        # Arrange
         from scitex_str import search
 
-        indices, matched = search(
-            "orange",
-            ["orange", "orange_juice"],
-            only_perfect_match=True,
-        )
+        strings = ["orange", "orange_juice"]
+        # Act
+        indices, matched = search("orange", strings, only_perfect_match=True)
+        # Assert
         assert matched == ["orange"]
 
-    def test_as_bool_mode(self):
+    def test_as_bool_mode_returns_numpy_array(self):
+        # Arrange
         import numpy as np
 
         from scitex_str import search
 
-        bools, matched = search("apple", ["apple", "banana", "pineapple"], as_bool=True)
+        strings = ["apple", "banana", "pineapple"]
+        # Act
+        bools, matched = search("apple", strings, as_bool=True)
+        # Assert
         assert isinstance(bools, np.ndarray)
+
+    def test_as_bool_mode_array_has_bool_dtype(self):
+        # Arrange
+        from scitex_str import search
+
+        strings = ["apple", "banana", "pineapple"]
+        # Act
+        bools, matched = search("apple", strings, as_bool=True)
+        # Assert
         assert bools.dtype == bool
+
+    def test_as_bool_mode_first_element_matches(self):
+        # Arrange
+        import numpy as np
+
+        from scitex_str import search
+
+        strings = ["apple", "banana", "pineapple"]
+        # Act
+        bools, matched = search("apple", strings, as_bool=True)
+        # Assert
         assert bools[0] is np.True_
 
 
@@ -247,33 +432,56 @@ class TestReplace:
     def _check_deps(self):
         pytest.importorskip("scitex_dict")
 
-    def test_dict_replacement(self):
+    def test_dict_replacement_substitutes_placeholder(self):
+        # Arrange
         from scitex_str import replace
 
-        result = replace("Hello, {name}!", {"name": "World"})
+        template = "Hello, {name}!"
+        # Act
+        result = replace(template, {"name": "World"})
+        # Assert
         assert result == "Hello, World!"
 
     def test_string_replacement_returns_new_string(self):
+        # Arrange
         from scitex_str import replace
 
-        assert replace("old", "new") == "new"
+        original = "old"
+        # Act
+        result = replace(original, "new")
+        # Assert
+        assert result == "new"
 
-    def test_none_replacements_returns_original(self):
+    def test_none_replacements_returns_original_unchanged(self):
+        # Arrange
         from scitex_str import replace
 
-        assert replace("hello", None) == "hello"
+        original = "hello"
+        # Act
+        result = replace(original, None)
+        # Assert
+        assert result == "hello"
 
-    def test_multiple_placeholders(self):
+    def test_multiple_placeholders_all_substituted(self):
+        # Arrange
         from scitex_str import replace
 
-        result = replace("{a} and {b}", {"a": "X", "b": "Y"})
+        template = "{a} and {b}"
+        # Act
+        result = replace(template, {"a": "X", "b": "Y"})
+        # Assert
         assert result == "X and Y"
 
-    def test_non_string_input_raises(self):
+    def test_non_string_input_raises_type_error(self):
+        # Arrange
         from scitex_str import replace
 
+        bad_input = 123
+        # Act
+        action = lambda: replace(bad_input, {"key": "val"})
+        # Assert
         with pytest.raises(TypeError):
-            replace(123, {"key": "val"})
+            action()
 
 
 # ---------------------------------------------------------------------------
@@ -282,79 +490,148 @@ class TestReplace:
 class TestToLatexStyle:
     """Tests for to_latex_style and safe_to_latex_style."""
 
-    def test_wraps_string_in_dollars(self):
+    def test_wraps_plain_string_in_dollars(self):
+        # Arrange
         from scitex_str import to_latex_style
 
-        assert to_latex_style("x^2") == "$x^2$"
+        expr = "x^2"
+        # Act
+        result = to_latex_style(expr)
+        # Assert
+        assert result == "$x^2$"
 
-    def test_wraps_number(self):
+    def test_wraps_numeric_value_in_dollars(self):
+        # Arrange
         from scitex_str import to_latex_style
 
-        assert to_latex_style(123) == "$123$"
+        expr = 123
+        # Act
+        result = to_latex_style(expr)
+        # Assert
+        assert result == "$123$"
 
-    def test_avoids_double_wrapping(self):
+    def test_already_wrapped_input_not_double_wrapped(self):
+        # Arrange
         from scitex_str import to_latex_style
 
-        assert to_latex_style("$already$") == "$already$"
+        expr = "$already$"
+        # Act
+        result = to_latex_style(expr)
+        # Assert
+        assert result == "$already$"
 
-    def test_empty_input_returns_empty(self):
+    def test_empty_string_input_returns_empty(self):
+        # Arrange
         from scitex_str import to_latex_style
 
-        assert to_latex_style("") == ""
-        assert to_latex_style(None) == ""
+        # Act
+        result = to_latex_style("")
+        # Assert
+        assert result == ""
 
-    def test_safe_alias_identical(self):
+    def test_none_input_returns_empty(self):
+        # Arrange
+        from scitex_str import to_latex_style
+
+        # Act
+        result = to_latex_style(None)
+        # Assert
+        assert result == ""
+
+    def test_safe_alias_matches_canonical_function(self):
+        # Arrange
         from scitex_str import safe_to_latex_style, to_latex_style
 
-        assert safe_to_latex_style("abc") == to_latex_style("abc")
+        expr = "abc"
+        # Act
+        result = safe_to_latex_style(expr)
+        # Assert
+        assert result == to_latex_style(expr)
 
-    def test_zero_is_handled(self):
+    def test_zero_value_is_wrapped(self):
+        # Arrange
         from scitex_str import to_latex_style
 
-        assert to_latex_style(0) == "$0$"
+        expr = 0
+        # Act
+        result = to_latex_style(expr)
+        # Assert
+        assert result == "$0$"
 
 
 class TestAddHatInLatexStyle:
     """Tests for add_hat_in_latex_style."""
 
-    def test_adds_hat(self):
+    def test_adds_hat_around_string_symbol(self):
+        # Arrange
         from scitex_str import add_hat_in_latex_style
 
-        result = add_hat_in_latex_style("x")
+        symbol = "x"
+        # Act
+        result = add_hat_in_latex_style(symbol)
+        # Assert
         assert result == r"$\hat{x}$"
 
-    def test_hat_with_number(self):
+    def test_adds_hat_around_numeric_symbol(self):
+        # Arrange
         from scitex_str import add_hat_in_latex_style
 
-        result = add_hat_in_latex_style(1)
+        symbol = 1
+        # Act
+        result = add_hat_in_latex_style(symbol)
+        # Assert
         assert result == r"$\hat{1}$"
 
-    def test_empty_returns_empty(self):
+    def test_empty_input_returns_empty_string(self):
+        # Arrange
         from scitex_str import add_hat_in_latex_style
 
-        assert add_hat_in_latex_style("") == ""
+        # Act
+        result = add_hat_in_latex_style("")
+        # Assert
+        assert result == ""
 
 
 class TestLatexToUnicode:
     """Tests for latex_to_unicode conversion."""
 
-    def test_greek_letter(self):
+    def test_greek_letter_macro_becomes_unicode_alpha(self):
+        # Arrange
         from scitex_str import latex_to_unicode
 
-        result = latex_to_unicode(r"$\\alpha$")
+        expr = r"$\\alpha$"
+        # Act
+        result = latex_to_unicode(expr)
+        # Assert
         assert "α" in result
 
-    def test_math_symbol(self):
+    def test_math_macro_becomes_unicode_plus_minus(self):
+        # Arrange
         from scitex_str import latex_to_unicode
 
-        result = latex_to_unicode(r"$\\pm$")
+        expr = r"$\\pm$"
+        # Act
+        result = latex_to_unicode(expr)
+        # Assert
         assert "±" in result
 
-    def test_empty_returns_empty(self):
+    def test_empty_string_input_returns_empty_string(self):
+        # Arrange
         from scitex_str import latex_to_unicode
 
-        assert latex_to_unicode("") == ""
-        assert latex_to_unicode(None) is None
+        # Act
+        result = latex_to_unicode("")
+        # Assert
+        assert result == ""
+
+    def test_none_input_returns_none(self):
+        # Arrange
+        from scitex_str import latex_to_unicode
+
+        # Act
+        result = latex_to_unicode(None)
+        # Assert
+        assert result is None
 
 
 # ---------------------------------------------------------------------------
@@ -363,49 +640,108 @@ class TestLatexToUnicode:
 class TestColorText:
     """Tests for color_text and ct alias."""
 
-    def test_applies_ansi_codes(self):
+    def test_applies_red_ansi_open_code(self):
+        # Arrange
         from scitex_str import color_text
 
-        result = color_text("hello", "red")
+        text = "hello"
+        # Act
+        result = color_text(text, "red")
+        # Assert
         assert "\033[91m" in result
+
+    def test_applies_ansi_reset_code(self):
+        # Arrange
+        from scitex_str import color_text
+
+        text = "hello"
+        # Act
+        result = color_text(text, "red")
+        # Assert
         assert "\033[0m" in result
+
+    def test_preserves_original_text_content(self):
+        # Arrange
+        from scitex_str import color_text
+
+        text = "hello"
+        # Act
+        result = color_text(text, "red")
+        # Assert
         assert "hello" in result
 
-    def test_ct_is_alias(self):
+    def test_ct_alias_matches_color_text(self):
+        # Arrange
         from scitex_str import color_text, ct
 
-        assert ct("hi", "blue") == color_text("hi", "blue")
+        # Act
+        result = ct("hi", "blue")
+        # Assert
+        assert result == color_text("hi", "blue")
 
     def test_default_color_is_green(self):
+        # Arrange
         from scitex_str import color_text
 
-        result = color_text("test")
+        text = "test"
+        # Act
+        result = color_text(text)
+        # Assert
         assert "\033[92m" in result
 
     def test_unknown_color_falls_back_to_reset(self):
+        # Arrange
         from scitex_str import color_text
 
-        result = color_text("test", "nonexistent")
+        text = "test"
+        # Act
+        result = color_text(text, "nonexistent")
+        # Assert
         assert "\033[0m" in result
 
 
 class TestMaskApi:
     """Tests for mask_api function."""
 
-    def test_masks_middle(self):
+    def test_keeps_short_prefix_of_key(self):
+        # Arrange
         from scitex_str import mask_api
 
-        result = mask_api("sk-1234567890abcdef")
+        key = "sk-1234567890abcdef"
+        # Act
+        result = mask_api(key)
+        # Assert
         assert result.startswith("sk-1")
+
+    def test_keeps_short_suffix_of_key(self):
+        # Arrange
+        from scitex_str import mask_api
+
+        key = "sk-1234567890abcdef"
+        # Act
+        result = mask_api(key)
+        # Assert
         assert result.endswith("cdef")
+
+    def test_masks_middle_with_asterisks(self):
+        # Arrange
+        from scitex_str import mask_api
+
+        key = "sk-1234567890abcdef"
+        # Act
+        result = mask_api(key)
+        # Assert
         assert "****" in result
 
-    def test_masks_long_key(self):
+    def test_long_key_is_partially_masked(self):
+        # Arrange
         from scitex_str import mask_api
 
-        result = mask_api("abcdefghijklmnopqrstuvwxyz")
-        # Should mask some portion of the key
-        assert "****" in result or "***" in result or len(result) < 26
+        key = "abcdefghijklmnopqrstuvwxyz"
+        # Act
+        result = mask_api(key)
+        # Assert
+        assert "***" in result or len(result) < 26
 
 
 # ---------------------------------------------------------------------------
@@ -418,46 +754,106 @@ class TestFactorOutDigits:
     def _check_deps(self):
         pytest.importorskip("numpy")
 
-    def test_thousands(self):
+    def test_thousands_factored_to_units(self):
+        # Arrange
         from scitex_str import factor_out_digits
 
-        factored, factor_str = factor_out_digits([1000, 2000, 3000])
+        values = [1_000, 2_000, 3_000]
+        # Act
+        factored, factor_str = factor_out_digits(values)
+        # Assert
         assert factored == [1.0, 2.0, 3.0]
+
+    def test_thousands_factor_string_contains_exponent_base(self):
+        # Arrange
+        from scitex_str import factor_out_digits
+
+        values = [1_000, 2_000, 3_000]
+        # Act
+        factored, factor_str = factor_out_digits(values)
+        # Assert
         assert "10" in factor_str
+
+    def test_thousands_factor_string_contains_exponent_digit(self):
+        # Arrange
+        from scitex_str import factor_out_digits
+
+        values = [1_000, 2_000, 3_000]
+        # Act
+        factored, factor_str = factor_out_digits(values)
+        # Assert
         assert "3" in factor_str
 
-    def test_small_values_no_factor(self):
+    def test_small_values_yield_empty_factor_string(self):
+        # Arrange
         from scitex_str import factor_out_digits
 
-        factored, factor_str = factor_out_digits([1, 2, 3])
+        values = [1, 2, 3]
+        # Act
+        factored, factor_str = factor_out_digits(values)
+        # Assert
         assert factor_str == ""
 
-    def test_scalar_input(self):
+    def test_scalar_input_returns_float_factored_value(self):
+        # Arrange
         from scitex_str import factor_out_digits
 
-        factored, factor_str = factor_out_digits(1e6)
+        value = 1e6
+        # Act
+        factored, factor_str = factor_out_digits(value)
+        # Assert
         assert isinstance(factored, float)
+
+    def test_scalar_input_factor_string_contains_exponent(self):
+        # Arrange
+        from scitex_str import factor_out_digits
+
+        value = 1e6
+        # Act
+        factored, factor_str = factor_out_digits(value)
+        # Assert
         assert "6" in factor_str
 
-    def test_all_zeros_no_factor(self):
+    def test_all_zero_values_yield_empty_factor_string(self):
+        # Arrange
         from scitex_str import factor_out_digits
 
-        factored, factor_str = factor_out_digits([0, 0, 0])
+        values = [0, 0, 0]
+        # Act
+        factored, factor_str = factor_out_digits(values)
+        # Assert
         assert factor_str == ""
 
-    def test_negative_powers(self):
+    def test_negative_power_factored_to_units(self):
+        # Arrange
         from scitex_str import factor_out_digits
 
-        factored, factor_str = factor_out_digits([0.001, 0.002, 0.003])
+        values = [0.001, 0.002, 0.003]
+        # Act
+        factored, factor_str = factor_out_digits(values)
+        # Assert
         assert factored == [1.0, 2.0, 3.0]
+
+    def test_negative_power_factor_string_has_minus_three(self):
+        # Arrange
+        from scitex_str import factor_out_digits
+
+        values = [0.001, 0.002, 0.003]
+        # Act
+        factored, factor_str = factor_out_digits(values)
+        # Assert
         assert "-3" in factor_str
 
-    def test_unicode_mode(self):
+    def test_unicode_mode_uses_multiplication_sign(self):
+        # Arrange
         from scitex_str import factor_out_digits
 
+        values = [1_000, 2_000]
+        # Act
         _, factor_str = factor_out_digits(
-            [1000, 2000], return_latex=False, return_unicode=True
+            values, return_latex=False, return_unicode=True
         )
+        # Assert
         assert "×10" in factor_str
 
 
@@ -467,11 +863,15 @@ class TestFactorOutDigits:
 class TestPrintc:
     """Tests for printc function (prints to stdout)."""
 
-    def test_does_not_raise(self, capsys):
+    def test_printc_emits_message_to_stdout(self, capsys):
+        # Arrange
         from scitex_str import printc
 
-        printc("test message", c="green")
+        message = "test message"
+        # Act
+        printc(message, c="green")
         captured = capsys.readouterr()
+        # Assert
         assert "test message" in captured.out
 
 

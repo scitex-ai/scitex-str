@@ -14,7 +14,7 @@ THIS_FILE = "/home/ywatanabe/proj/scitex_repo/src/scitex/str/_printc.py"
 
 # Time-stamp: "2024-11-03 03:47:51 (ywatanabe)"
 
-from ._color_text import color_text
+from scitex_str._ansi import color_text
 
 
 def printc(message, c="blue", char="-", n=40):

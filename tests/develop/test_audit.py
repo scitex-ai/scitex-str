@@ -25,10 +25,7 @@ def test_audit_all_reports_no_violations_for_package(scitex_dev_cli_or_skip):
 
     completed_without_error = False
     # Act
-    audit_all_for_package(
-        "scitex-str",
-        skip_rules=("PS-108b",),  # 20 flat .py files — structural refactor pending
-    )
+    audit_all_for_package("scitex-str")
     completed_without_error = True
     # Assert
     assert completed_without_error

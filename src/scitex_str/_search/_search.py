@@ -43,13 +43,13 @@ def search(
     Returns
     -------
     tuple
-        A tuple containing two elements:
-        - If as_bool is False: (list of int, list of str)
-          The first element is a list of indices where matches were found.
-          The second element is a list of matched strings.
-        - If as_bool is True: (numpy.ndarray of bool, list of str)
-          The first element is a boolean array indicating matches.
-          The second element is a list of matched strings.
+        A two-element tuple. Its shape depends on ``as_bool``:
+
+        - ``as_bool=False`` returns ``(list[int], list[str])`` — the
+          indices where matches were found, and the matched strings.
+        - ``as_bool=True`` returns ``(numpy.ndarray[bool], list[str])`` —
+          a boolean mask the same length as ``strings``, and the matched
+          strings.
 
     Example
     -------

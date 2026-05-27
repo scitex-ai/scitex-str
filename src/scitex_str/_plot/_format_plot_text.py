@@ -23,7 +23,7 @@ from typing import Optional, Tuple
 # defensive try/except violated the ecosystem rule that raw
 # `try/except ImportError` must be replaced by try_import_optional — and
 # the guarded import was internal anyway, so the guard was dead code.
-from ._latex_fallback import latex_fallback_decorator, safe_latex_render
+from scitex_str._latex import latex_fallback_decorator, safe_latex_render
 
 FALLBACK_AVAILABLE = True
 

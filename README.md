@@ -16,7 +16,7 @@
 <p align="center">
   <a href="https://pypi.org/project/scitex-str/"><img src="https://img.shields.io/pypi/v/scitex-str.svg" alt="PyPI"></a>
   <a href="https://pypi.org/project/scitex-str/"><img src="https://img.shields.io/pypi/pyversions/scitex-str.svg" alt="Python"></a>
-  <a href="https://github.com/ywatanabe1989/scitex-str/actions/workflows/test.yml"><img src="https://github.com/ywatanabe1989/scitex-str/actions/workflows/test.yml/badge.svg" alt="Tests"></a>
+  <a href="https://github.com/ywatanabe1989/scitex-str/actions/workflows/pytest-matrix-on-ubuntu-py3-11-3-12-3-13.yml"><img src="https://github.com/ywatanabe1989/scitex-str/actions/workflows/pytest-matrix-on-ubuntu-py3-11-3-12-3-13.yml/badge.svg" alt="Tests"></a>
   <a href="https://codecov.io/gh/ywatanabe1989/scitex-str"><img src="https://codecov.io/gh/ywatanabe1989/scitex-str/graph/badge.svg" alt="Coverage"></a>
   <a href="https://scitex-str.readthedocs.io/en/latest/"><img src="https://readthedocs.org/projects/scitex-str/badge/?version=latest" alt="Docs"></a>
   <a href="https://www.gnu.org/licenses/agpl-3.0"><img src="https://img.shields.io/badge/license-AGPL_v3-blue.svg" alt="License: AGPL v3"></a>
@@ -44,13 +44,30 @@ pip install scitex-str
 
 ```
 scitex_str/
-├── _to_latex_style.py / _safe_to_latex_style.py   # LaTeX rendering with fallback
-├── _color_text.py / _printc.py                     # ANSI color helpers
-├── _parse.py / _grep.py / _search.py / _replace.py # text search & template parse
-├── _format_plot_text.py                            # axis-label formatter
-├── _readable_bytes.py / _factor_out_digits.py      # numeric formatting
-├── _mask_api.py / _remove_ansi.py                  # sanitization
-├── _squeeze_space.py / _title.py / _decapitalize.py# small string ops
+├── _latex/                                          # LaTeX rendering with fallback
+│   ├── _latex.py / _latex_fallback.py
+│   └── ...
+├── _ansi/                                           # ANSI color helpers
+│   ├── _color_text.py / _remove_ansi.py
+│   └── ...
+├── _search/                                         # text search & template parse
+│   ├── _grep.py / _parse.py / _search.py / _replace.py
+│   └── ...
+├── _plot/                                           # axis-label formatter
+│   ├── _format_plot_text.py / _factor_out_digits.py
+│   └── ...
+├── _print/                                          # colored / debug console output
+│   ├── _printc.py / _print_block.py / _print_debug.py
+│   └── ...
+├── _mask/                                           # sanitization
+│   ├── _mask_api.py / _mask_api_key.py
+│   └── ...
+├── _case/                                           # case transforms
+│   ├── _title_case.py / _decapitalize.py
+│   └── ...
+├── _readable_bytes.py                               # numeric formatting
+├── _clean_path.py                                   # path normalization
+├── _squeeze_space.py                                # whitespace collapse
 └── ...                                              # ~20 boring helpers, one per file
 ```
 

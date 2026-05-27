@@ -26,7 +26,11 @@ jobs:
           python-version: "3.11"
 
       - name: Install package + docs deps
-        run: pip install -e ".[docs]"
+        # Sphinx tooling was folded into [dev] when the fragmented
+        # [docs] extra was removed (see pyproject.toml comment). Using
+        # [docs] silently installs a no-extras build → `sphinx-build:
+        # command not found` at the next step.
+        run: pip install -e ".[dev]"
 
       - name: Build Sphinx HTML (warnings fail PRs only)
         run: |

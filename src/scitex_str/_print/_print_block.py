@@ -3,7 +3,7 @@
 # Time-stamp: "2024-11-03 03:44:47 (ywatanabe)"
 # File: ./scitex_repo/src/scitex/str/_print_block.py
 
-from ._color_text import color_text
+from scitex_str._ansi import color_text
 
 
 def printc(message, char="-", n=40, c="cyan"):

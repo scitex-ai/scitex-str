@@ -1,0 +1,40 @@
+name: tests-minimal
+
+# Minimal-install test job: installs the package with NO optional extras
+# (base deps only) to exercise the "optional peer absent" code paths.
+# Integration tests that need an optional peer must `pytest.importorskip(...)`
+# so they self-skip here; degradation tests assert graceful behaviour when
+# the peer is missing. The full matrix (.[all,dev]) lives in
+# pytest-matrix-on-ubuntu-py3-11-3-12-3-13.yml and covers the present path.
+#
+# Uses uv for fast, cached installs.
+
+on:
+  push:
+    branches: [main, develop]
+  pull_request:
+    branches: [main, develop]
+  workflow_dispatch:
+
+jobs:
+  test-minimal:
+    name: pytest-minimal-on-ubuntu-py3-12
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Set up Python 3.12
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Install uv
+        uses: astral-sh/setup-uv@v5
+      - name: Install package WITHOUT optional extras (base only)
+        run: |
+          # Deliberately NO [all]/[dev] extras — only the base package plus a
+          # minimal test runner — so optional-dependency code paths run in
+          # their "peer absent" form. uv --system targets the runner's Python.
+          uv pip install --system -e .
+          uv pip install --system pytest pytest-cov pytest-timeout
+      - name: Run tests (optional-dep integration tests self-skip via importorskip)
+        run: |
+          pytest tests/ -q -p no:cacheprovider

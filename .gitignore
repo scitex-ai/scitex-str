@@ -21,3 +21,4 @@ docs/sphinx/_build/
 !.scitex/dev/config.yaml
 .DS_Store
 *.swp
+/.worktrees/

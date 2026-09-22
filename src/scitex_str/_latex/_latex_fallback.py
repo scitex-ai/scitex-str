@@ -415,13 +415,21 @@ def safe_latex_render(
     if not text or not isinstance(text, str):
         return text
 
-    # Import matplotlib when needed
-    import matplotlib.pyplot as plt
+    # Import matplotlib when needed. Optional `[all]` dep — gated by
+    # try_import_optional (None on missing install); without it there is
+    # no LaTeX canvas to probe, so fall straight through to the
+    # pure-python fallback strategies below.
+    plt = try_import_optional(
+        "matplotlib.pyplot", extra="all", pkg="scitex-str"
+    )
 
-    # Determine if we should attempt LaTeX
-    use_latex = _fallback_mode == "auto" and check_latex_capability()
-
-    if use_latex:
+    # Determine if we should attempt LaTeX (inline `is not None` keeps the
+    # type-narrowing visible to checkers inside the block).
+    if (
+        plt is not None
+        and _fallback_mode == "auto"
+        and check_latex_capability()
+    ):
         # Try LaTeX first
         try:
             # Test rendering capability with the actual text
@@ -528,8 +536,14 @@ def latex_fallback_decorator(
                         else:
                             new_kwargs[key] = value
 
-                    # Import matplotlib when needed
-                    import matplotlib.pyplot as plt
+                    # Optional `[all]` dep — without matplotlib there are no
+                    # rcParams to toggle; run the fallback-rendered call
+                    # directly instead of failing on the import.
+                    plt = try_import_optional(
+                        "matplotlib.pyplot", extra="all", pkg="scitex-str"
+                    )
+                    if plt is None:
+                        return func(*new_args, **new_kwargs)
 
                     # Temporarily disable LaTeX for this call
                     original_usetex = plt.rcParams.get("text.usetex", False)
@@ -558,7 +572,20 @@ def get_latex_status() -> Dict[str, Any]:
     Dict[str, Any]
         Status information including capability, mode, and configuration
     """
-    import matplotlib.pyplot as plt
+    # Optional `[all]` dep — report matplotlib-backed fields as defaults
+    # when it is not installed instead of failing on the import.
+    plt = try_import_optional(
+        "matplotlib.pyplot", extra="all", pkg="scitex-str"
+    )
+    if plt is None:
+        return {
+            "latex_available": False,
+            "fallback_mode": get_fallback_mode(),
+            "usetex_enabled": False,
+            "mathtext_fontset": "cm",
+            "font_family": ["serif"],
+            "cache_info": check_latex_capability.cache_info()._asdict(),
+        }
 
     return {
         "latex_available": check_latex_capability(),

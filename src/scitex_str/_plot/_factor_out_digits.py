@@ -17,6 +17,7 @@ Prerequisites:
 from typing import List, Optional, Tuple, Union
 
 import numpy as np
+from scitex_dev import try_import_optional
 
 
 def factor_out_digits(
@@ -284,11 +285,21 @@ def smart_tick_formatter(
     """
     values_array = np.array(values)
 
-    # Create nice tick positions
-    from matplotlib.ticker import MaxNLocator
-
-    locator = MaxNLocator(nbins=max_ticks, prune="both")
-    tick_positions = locator.tick_values(values_array.min(), values_array.max())
+    # Nice tick positions. MaxNLocator is an optional `[all]` dep — gated
+    # by try_import_optional; without matplotlib fall back to evenly
+    # spaced positions (pure numpy) so lean installs still get ticks.
+    MaxNLocator = try_import_optional(
+        "matplotlib.ticker", "MaxNLocator", extra="all", pkg="scitex-str"
+    )
+    if MaxNLocator is not None:
+        locator = MaxNLocator(nbins=max_ticks, prune="both")
+        tick_positions = locator.tick_values(
+            values_array.min(), values_array.max()
+        )
+    else:
+        tick_positions = np.linspace(
+            values_array.min(), values_array.max(), max_ticks
+        )
 
     # Factor out common digits if requested
     if factor_out:

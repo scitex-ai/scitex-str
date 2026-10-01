@@ -16,6 +16,8 @@ in its source tree. Two outcomes:
   (which installs every peer) catches cross-package renames.
 """
 
+import importlib
+
 import pytest
 
 # ===== AUTO-GENERATED: cross-package imports =====
@@ -33,7 +35,10 @@ def test_cross_package_import_resolves_module_name(module_name):
     # Arrange
     name = module_name
     # Act
-    module = pytest.importorskip(name)
+    # PS-140: skip on the ROOT so a renamed submodule fails loudly
+    # instead of being silently skipped; hard-import the FULL path.
+    pytest.importorskip(name.split(".")[0])
+    module = importlib.import_module(name)
     # Assert
     assert module is not None
 

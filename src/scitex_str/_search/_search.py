@@ -4,18 +4,16 @@
 # File: ./scitex_repo/src/scitex/str/_search.py
 
 import re
+import sys
 from collections import abc
 
 import numpy as np
 from natsort import natsorted
-from scitex_dev import try_import_optional
 
-# Optional deps live in [project.optional-dependencies.all]. The package
-# imports cleanly without them; `search` just won't recognise the extra
-# array-like types as input. See
+# Optional deps (pandas, xarray) live in [project.optional-dependencies.all].
+# They are never imported here: `search` recognises their array-like types
+# when the caller has imported them (see `to_list`). See
 # ~/.claude/skills/scitex/general/05_development_11_dependency-tiers.md
-_pd = try_import_optional("pandas", extra="all", pkg="scitex-str")
-_xr = try_import_optional("xarray", extra="all", pkg="scitex-str")
 
 
 def search(
@@ -91,8 +89,13 @@ def search(
         >>> to_list(np.array(['x', 'y']))
         ['x', 'y']
         """
-        # Optional heavy deps — accept them when installed, no-op otherwise.
-        # Sourced at module import via scitex_dev.try_import_optional.
+        # Optional heavy deps — accept their types when ALREADY imported.
+        # An object of a pandas / xarray type cannot exist unless that
+        # package was imported, so reading sys.modules is exact and never
+        # imports them (importing both cost ~0.4-1.5 s of every
+        # `import scitex_str`, i.e. of every @stx.session start-up).
+        _pd = sys.modules.get("pandas")
+        _xr = sys.modules.get("xarray")
         arraylike_types: list = [np.ndarray]
         if _pd is not None:
             arraylike_types.append(_pd.Series)

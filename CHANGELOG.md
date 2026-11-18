@@ -7,6 +7,8 @@ versions follow [Semantic Versioning](https://semver.org/).
 
 ## [Unreleased]
 
+- Perf: `import scitex_str` no longer imports pandas / xarray (0.4–1.5 s, paid by every `@stx.session` start-up). `search()` recognises `pandas.Series` / `pandas.Index` / `xarray.DataArray` inputs whenever the caller has imported those packages (read from `sys.modules`; an object of their type cannot exist otherwise).
+
 ## [0.1.12]
 
 - Refactor: promote flat modules into topical subpackages (`_ansi/`, `_case/`, `_latex/`, `_mask/`, `_plot/`, `_print/`, `_search/`).

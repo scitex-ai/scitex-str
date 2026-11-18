@@ -16,6 +16,9 @@ htmlcov/
 .venv/
 venv/
 docs/sphinx/_build/
+# Sphinx build caches must not ship in the bundled docs (release build gate)
+src/scitex_str/_sphinx_html/.doctrees/
+src/scitex_str/_sphinx_html/.buildinfo
 .scitex/*
 !.scitex/dev/
 .scitex/dev/*

@@ -8,6 +8,7 @@ dist/
 .pytest_cache/
 .ruff_cache/
 .coverage
+.coverage.*
 htmlcov/
 .tox/
 .mypy_cache/
@@ -15,9 +16,13 @@ htmlcov/
 .venv/
 venv/
 docs/sphinx/_build/
+# Sphinx build caches must not ship in the bundled docs (release build gate)
+src/scitex_str/_sphinx_html/.doctrees/
+src/scitex_str/_sphinx_html/.buildinfo
 .scitex/*
 !.scitex/dev/
 .scitex/dev/*
 !.scitex/dev/config.yaml
 .DS_Store
 *.swp
+/.worktrees/

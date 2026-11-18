@@ -1,0 +1,48 @@
+name: ci
+
+# ============================================================================
+# Migrated to scitex-ai/.github reusable workflows (2026-07-10 CI-drift
+# remediation). Job bodies now live at org level; this file is a thin
+# workflow_call caller. The previous "CANONICAL CI — synced by
+# `scitex-dev ecosystem sync-workflows`" mechanism is superseded by this
+# migration — that sync tool is what let CI bodies (e.g. import-smoke:
+# 29/29 unique) drift fleet-wide despite being nominally "canonical". New
+# required-status-check contexts are documented per job below.
+#
+# Runner: unchanged — the reusable workflows target the same self-hosted
+# Spartan CPU runner (label spartan-cpu) as before.
+# ============================================================================
+
+on:
+  pull_request:
+    branches: [main, develop]
+  push:
+    branches: [main, develop]
+  schedule:
+    - cron: "0 17 * * *" # nightly 17:00 UTC (~02:00 JST), off-peak
+  workflow_dispatch:
+
+concurrency:
+  group: ci-${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  pytest-matrix:
+    # New required-status-check context: "pytest-matrix / pytest-matrix-on-ubuntu-py<X.YY>"
+    uses: scitex-ai/.github/.github/workflows/pytest-matrix.yml@main
+    secrets: inherit
+
+  import-smoke:
+    # New required-status-check context: "import-smoke / import-smoke-on-ubuntu-py3-12"
+    uses: scitex-ai/.github/.github/workflows/import-smoke.yml@main
+    secrets: inherit
+
+  quality-audit:
+    # New required-status-check context: "quality-audit / audit"
+    uses: scitex-ai/.github/.github/workflows/quality-audit.yml@main
+    secrets: inherit
+
+  rtd-sphinx-build:
+    # New required-status-check context: "rtd-sphinx-build / docs-sphinx"
+    uses: scitex-ai/.github/.github/workflows/rtd-sphinx-build.yml@main
+    secrets: inherit

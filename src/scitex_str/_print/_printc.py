@@ -16,6 +16,12 @@ THIS_FILE = "/home/ywatanabe/proj/scitex_repo/src/scitex/str/_printc.py"
 
 from scitex_str._ansi import color_text
 
+import scitex_logging as slogging
+
+# PS-220: display surface via scitex-logging plain console (stdout,
+# byte-for-byte, no level prefix) instead of builtin print.
+console = slogging.getPlainConsole(__name__)
+
 
 def printc(message, c="blue", char="-", n=40):
     """Print a message surrounded by a character border.
@@ -56,7 +62,7 @@ def printc(message, c="blue", char="-", n=40):
     if c is not None:
         text = color_text(text, c)
 
-    print(text)
+    console.emit(text)
 
 
 # EOF

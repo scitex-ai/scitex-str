@@ -41,3 +41,32 @@ def test_parse_extracts_named_fields_from_format_pattern():
     parsed = parse(raw, pattern)
     # Assert
     assert int(parsed["patient"]) == 10
+
+
+def test_import_scitex_str_does_not_import_pandas_or_xarray():
+    # Arrange: a fresh interpreter, so modules other tests imported do not count
+    import subprocess
+    import sys
+
+    code = (
+        "import sys, scitex_str; "
+        "print(sorted(m for m in ('pandas', 'xarray') if m in sys.modules))"
+    )
+    # Act
+    out = subprocess.run(
+        [sys.executable, "-c", code], capture_output=True, text=True, check=True
+    ).stdout.strip()
+    # Assert
+    assert out == "[]"
+
+
+def test_search_accepts_pandas_series_when_pandas_is_imported():
+    # Arrange
+    import pytest
+
+    pd = pytest.importorskip("pandas")
+    candidates = pd.Series(["foo", "bar", "foobar"])
+    # Act
+    matched_indices, _ = search(["foo"], candidates)
+    # Assert
+    assert list(matched_indices) == [0, 2]

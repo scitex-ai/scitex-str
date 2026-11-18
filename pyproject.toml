@@ -40,7 +40,7 @@ dependencies = [
     # from `pip install scitex-str` alone. See
     # ~/.claude/skills/scitex/general/05_development_11_dependency-tiers.md
     "scitex-dev>=0.11.7",  # try_import_optional, skills/docs entry-points, ecosystem audits
-    "scitex-logging",      # lazy-imported logger in _latex_fallback (always hard per skill rule)
+    "scitex-logging>=0.2.2",  # logger in _latex_fallback; PlainConsole stdout for printc/print_block (0.2.2: stdout-stream fix)
     "scitex-dict>=0.1.0",  # DotDict — top-level import in _parse / _replace
     "natsort",             # natsorted — top-level import in _search
     "numpy",               # top-level import in _search / _factor_out_digits
@@ -65,7 +65,19 @@ dev = [
     "pytest-cov>=4.0.0",
     "pytest-xdist>=3.0.0",
     "pre-commit>=3.5.0",
-    # Docs build (folded in from the now-removed [docs] fragmented extra)
+    # Docs build (same set as the [docs] extra, so `[dev]` alone can build docs)
+    "sphinx>=7.0",
+    "sphinx-rtd-theme>=2.0",
+    "myst-parser>=2.0",
+    "sphinx-copybutton>=0.5",
+    "sphinx-autodoc-typehints>=1.25",
+]
+
+# Docs build only — mirrors docs/sphinx/requirements.txt (RTD). `docs` is an
+# allowed extra (PS-225 allowlist: all/dev/docs); the org rtd-sphinx-build
+# workflow installs `.[docs]`, and without this extra uv only warns and
+# installs no sphinx, failing `rtd-sphinx-build / docs-sphinx`.
+docs = [
     "sphinx>=7.0",
     "sphinx-rtd-theme>=2.0",
     "myst-parser>=2.0",
@@ -109,6 +121,12 @@ ignore = ["E501"]
 
 [tool.scitex-linter]
 library_dirs = ["src", "tests", "examples"]
+
+[tool.scitex_dev]
+# No console script and no __main__ — pure helper library, so the
+# subprocess CLI smoke layer (PS-211) and the e2e layer (PS-212) do not
+# apply. Documented opt-out (no_cli implies no_e2e).
+no_cli = true
 
 [tool.scitex_dev.audit]
 # PS-168 — Per-package secret + env-var prefix in GitHub Actions workflows.

@@ -7,6 +7,10 @@ versions follow [Semantic Versioning](https://semver.org/).
 
 ## [Unreleased]
 
+- Fix(audit): audit-all green. `printc` / `print_block` write via the scitex-logging plain console (same stdout bytes); matplotlib imports gated by `try_import_optional` (`smart_tick_formatter` now raises an `ImportError` with the `[all]` install hint instead of failing on a bare import); cross-package import test skips on the root and hard-imports the full path; CLA caller passes only the named PAT and an explicit hosted runner; CI installs one explicit `[all,dev]` profile with no fallback chain.
+- Fix(docs): restore the `[docs]` extra (allowed by PS-225) so the org `rtd-sphinx-build` workflow installs sphinx; the skills-quality test now points at the repo root instead of `tests/` (it was silently skipping).
+- Fix(deps): `scitex-logging>=0.2.2` (PlainConsole stdout handling).
+
 ## [0.1.12]
 
 - Refactor: promote flat modules into topical subpackages (`_ansi/`, `_case/`, `_latex/`, `_mask/`, `_plot/`, `_print/`, `_search/`).

@@ -17,6 +17,7 @@ Prerequisites:
 from typing import List, Optional, Tuple, Union
 
 import numpy as np
+from scitex_dev import try_import_optional
 
 
 def factor_out_digits(
@@ -284,9 +285,18 @@ def smart_tick_formatter(
     """
     values_array = np.array(values)
 
-    # Create nice tick positions
-    from matplotlib.ticker import MaxNLocator
-
+    # Nice tick positions come from matplotlib's MaxNLocator, an optional
+    # `[all]` dep gated by try_import_optional. Tick selection IS this
+    # function's job, so a lean install fails loudly with the install hint
+    # instead of silently returning differently-placed ticks.
+    MaxNLocator = try_import_optional(
+        "matplotlib.ticker", "MaxNLocator", extra="all", pkg="scitex-str"
+    )
+    if MaxNLocator is None:
+        raise ImportError(
+            "smart_tick_formatter requires matplotlib; "
+            "install it with: pip install 'scitex-str[all]'"
+        )
     locator = MaxNLocator(nbins=max_ticks, prune="both")
     tick_positions = locator.tick_values(values_array.min(), values_array.max())
 

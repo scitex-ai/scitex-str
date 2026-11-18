@@ -12,6 +12,15 @@ def test_printc_writes_message_to_stdout(capsys):
     assert message in capsys.readouterr().out
 
 
+def test_printc_stdout_is_byte_exact_bordered_block(capsys):
+    # Arrange — uncolored so the expected bytes are fully literal
+    border = "-" * 40
+    # Act
+    printc("hello", c=None)
+    # Assert — same bytes the builtin print() produced (trailing newline)
+    assert capsys.readouterr().out == f"\n{border}\nhello\n{border}\n\n"
+
+
 def test_printc_accepts_color_keyword_without_error(capsys):
     # Arrange
     message = "colored"

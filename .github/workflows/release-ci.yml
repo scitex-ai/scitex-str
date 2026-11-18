@@ -41,10 +41,9 @@ jobs:
       - name: Create uv venv on this matrix Python
         run: uv venv --python ${{ matrix.python-version }} .venv
       - name: Install dependencies
-        run: |
-          uv pip install --python .venv/bin/python -e ".[all,dev]" \
-            || uv pip install --python .venv/bin/python -e ".[dev]" \
-            || uv pip install --python .venv/bin/python -e .
+        # One explicit profile, no fallback (PS-235): an install failure
+        # must fail the job rather than silently test a narrower profile.
+        run: uv pip install --python .venv/bin/python -e ".[all,dev]"
       - name: Run tests
         run: |
           export PATH="$PWD/.venv/bin:$PATH"

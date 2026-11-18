@@ -17,7 +17,7 @@
 #   3. twine upload dist/* with TWINE_USERNAME=__token__ and that minted token.
 #
 # This requires a Trusted Publisher to be configured on PyPI for
-# (project=scitex-str, owner=ywatanabe1989, repo=scitex-str,
+# (project=scitex-str, repo=scitex-str,
 #  workflow=pypi-publish-and-github-release-on-tag.yml). It already is — the
 # previous releases published via the Docker action under the same trusted
 # publisher; only the *client* changes here, not PyPI's trust config.
@@ -49,7 +49,7 @@ echo "=== dist to publish ==="
 ls -l dist
 
 # --- writable scratch (compute-node HOME is RO inside the container) ---
-TMPDIR="/tmp/publish-scitex_str-$V"
+TMPDIR="/tmp/publish-scitex_str-${GITHUB_RUN_ID:-0}-${GITHUB_RUN_ATTEMPT:-0}-$V"
 export TMPDIR
 rm -rf "$TMPDIR"
 mkdir -p "$TMPDIR/site" "$TMPDIR/uv-cache"

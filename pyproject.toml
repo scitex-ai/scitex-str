@@ -44,6 +44,7 @@ dependencies = [
     "scitex-dict>=0.1.0",  # DotDict — top-level import in _parse / _replace
     "natsort",             # natsorted — top-level import in _search
     "numpy",               # top-level import in _search / _factor_out_digits
+    "scitex>=3.0.0.dev0,<4",  # thin core (PROTOTYPE): `import scitex as stx; stx.str`
 ]
 
 [project.optional-dependencies]
@@ -84,6 +85,9 @@ docs = [
     "sphinx-copybutton>=0.5",
     "sphinx-autodoc-typehints>=1.25",
 ]
+
+[project.entry-points."scitex.modules"]
+str = "scitex_str"
 
 [project.entry-points."scitex_dev.docs"]
 scitex-str = "scitex_str"

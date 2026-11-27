@@ -7,6 +7,8 @@ versions follow [Semantic Versioning](https://semver.org/).
 
 ## [Unreleased]
 
+- Test: configure subprocess coverage via coverage.py `patch = ["subprocess"]`; conftest no longer writes `.pth` files into site-packages or overwrites caller-owned coverage environment variables.
+
 ## [0.1.14] - 2026-11-18
 
 First published release carrying the 0.1.13 changes (0.1.13 was tagged but never published — see below).

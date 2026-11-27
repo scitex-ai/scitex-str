@@ -62,7 +62,8 @@ all = [
 # walks the default set automatically.
 dev = [
     "pytest>=7.0.0",
-    "pytest-cov>=4.0.0",
+    "coverage[toml]>=7.13.0",
+    "pytest-cov>=7.0.0",
     "pytest-xdist>=3.0.0",
     "pre-commit>=3.5.0",
     # Docs build (same set as the [docs] extra, so `[dev]` alone can build docs)
@@ -108,6 +109,7 @@ addopts = "-v --tb=short --cov=scitex_str --cov-report=term-missing"
 
 [tool.coverage.run]
 parallel = true
+patch = ["subprocess"]
 source = ["scitex_str"]
 concurrency = ["multiprocessing", "thread"]
 
